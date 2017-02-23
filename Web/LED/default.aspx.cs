@@ -24,6 +24,8 @@ namespace Web.LED
                 this.repgp.DataBind();
                 string strsql2 = "select * from view_guapai where DepaStatusId=7";
 
+
+
                 DataTable dt2 = DbHelperSQL.Query(strsql2).Tables[0];
                 this.repwc.DataSource = dt2;
                 this.repwc.DataBind();
