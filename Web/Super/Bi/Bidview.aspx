@@ -153,38 +153,180 @@
         </table>
 		</div>
         <div title="出让方信息" style="padding:10px">
-			<p style="font-size:14px">222jQuery EasyUI framework helps you build your web pages easily.</p>
-			<ul>
-				<li>easyui is a collection of user-interface plugin based on jQuery.</li>
-				<li>easyui provides essential functionality for building modem, interactive, javascript applications.</li>
-				<li>using easyui you don't need to write many javascript code, you usually defines user-interface by writing some HTML markup.</li>
-				<li>complete framework for HTML5 web page.</li>
-				<li>easyui save your time and scales while developing your products.</li>
-				<li>easyui is very easy but powerful.</li>
-			</ul>
+			 <table width="640" class="table" border="0px" cellpadding="0" cellspacing="0">
+            <tr>
+                <td height="35">
+                    组织单位
+                </td>
+                <td colspan="3">
+                    <asp:Label ID="lbzzdw_crf" runat="server" Text=""></asp:Label>
+                    
+                </td>
+                
+            </tr>
+            <tr>
+                <td height="35">
+                    经济类型
+                </td>
+                <td>
+                   <asp:Label ID="lbjjlx_crf" runat="server" Text="" Width="150px"></asp:Label>
+                </td>
+                <td>
+                    姓名
+                </td>
+                <td>
+                    <asp:Label ID="lbxm_crf" runat="server" Text="" Width="150px"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    住址
+                </td>
+                <td>
+                    <asp:Label ID="lbzz_crf" runat="server" Text=""></asp:Label>
+                </td>
+                <td height="35">
+                    联系人
+                </td>
+                <td>
+                   <asp:Label ID="lblxr_crf" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    法人代表
+                </td>
+                <td>
+                  <asp:Label ID="lbfrdb_crf" runat="server" Text=""></asp:Label>
+                </td>
+                <td height="35">
+                    身份证号码
+                </td>
+                <td>
+                    <asp:Label ID="lbsfz_crf" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td height="35">
+                    联系电话
+                </td>
+                <td>
+                    <asp:Label ID="lblxdh_crf" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    所有权人
+                </td>
+                <td>
+                    <asp:Label ID="lbsyqr_crf" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            
+                <tr>
+                    <td height="35">
+                        组织机构代码
+                    </td>
+                    <td>
+                       <asp:Label ID="lbzzjg_crf" runat="server" Text=""></asp:Label>
+                    </td>
+                    <td>
+                        注册资本
+                    </td>
+                    <td>
+                        <asp:Label ID="lbzczb_crf" runat="server" Text=""></asp:Label>
+                    </td>
+                </tr>
+            
+            
+        </table>
 		</div>
         <div title="受让方信息" style="padding:10px">
-			<p style="font-size:14px">333jQuery EasyUI framework helps you build your web pages easily.</p>
-			<ul>
-				<li>easyui is a collection of user-interface plugin based on jQuery.</li>
-				<li>easyui provides essential functionality for building modem, interactive, javascript applications.</li>
-				<li>using easyui you don't need to write many javascript code, you usually defines user-interface by writing some HTML markup.</li>
-				<li>complete framework for HTML5 web page.</li>
-				<li>easyui save your time and scales while developing your products.</li>
-				<li>easyui is very easy but powerful.</li>
-			</ul>
+			<table width="640" class="table" border="0px" cellpadding="0" cellspacing="0">
+            <tr>
+                <td height="35">
+                    组织单位
+                </td>
+                <td colspan="3">
+                    <asp:Label ID="lbzzdw_srf" runat="server" Text=""></asp:Label>
+                    
+                </td>
+                
+            </tr>
+            <tr>
+                <td height="35">
+                    经济类型
+                </td>
+                <td>
+                   <asp:Label ID="lbjjlx_srf" runat="server" Text="" Width="150px"></asp:Label>
+                </td>
+                <td>
+                    姓名
+                </td>
+                <td>
+                    <asp:Label ID="lbxm_srf" runat="server" Text="" Width="150px"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    住址
+                </td>
+                <td>
+                    <asp:Label ID="lbzz_srf" runat="server" Text=""></asp:Label>
+                </td>
+                <td height="35">
+                    联系人
+                </td>
+                <td>
+                   <asp:Label ID="lblxr_srf" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    法人代表
+                </td>
+                <td>
+                  <asp:Label ID="lbfrdb_srf" runat="server" Text=""></asp:Label>
+                </td>
+                <td height="35">
+                    身份证号码
+                </td>
+                <td>
+                    <asp:Label ID="lbsfz_srf" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td height="35">
+                    联系电话
+                </td>
+                <td>
+                    <asp:Label ID="lblxdh_srf" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    所有权人
+                </td>
+                <td>
+                    <asp:Label ID="lbsyqr_srf" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            
+                <tr>
+                    <td height="35">
+                        组织机构代码
+                    </td>
+                    <td>
+                       <asp:Label ID="lbzzjg_srf" runat="server" Text=""></asp:Label>
+                    </td>
+                    <td>
+                        注册资本
+                    </td>
+                    <td>
+                        <asp:Label ID="lbzczb_srf" runat="server" Text=""></asp:Label>
+                    </td>
+                </tr>
+            
+            
+        </table>
 		</div>
-        <div title="审核流程信息" style="padding:10px">
-			<p style="font-size:14px">444jQuery EasyUI framework helps you build your web pages easily.</p>
-			<ul>
-				<li>easyui is a collection of user-interface plugin based on jQuery.</li>
-				<li>easyui provides essential functionality for building modem, interactive, javascript applications.</li>
-				<li>using easyui you don't need to write many javascript code, you usually defines user-interface by writing some HTML markup.</li>
-				<li>complete framework for HTML5 web page.</li>
-				<li>easyui save your time and scales while developing your products.</li>
-				<li>easyui is very easy but powerful.</li>
-			</ul>
-		</div>
+        
         <div title="鉴证书预览信息" style="padding:10px">
 			<div style=" background-image:url('zs.jpg'); background-repeat:no-repeat; width:1240px; height:880px;position:relative;">
     <div style="position:absolute; left:450px; top:190px;white-space:normal;word-wrap:break-word">
