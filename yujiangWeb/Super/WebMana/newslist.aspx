@@ -75,6 +75,11 @@
                 onclick="btnshenhe_Click" /></li>
         <li><asp:Button ID="btnview" runat="server" Text="查看" CssClass="t_view" 
                 onclick="btnview_Click" /></li>
+                <li style=" width:180px;" id="liset"><asp:Button ID="btnnotice" runat="server" Text="设置首页滚动通知公告" CssClass="t_set" onclick="btnnotice_Click" 
+                 /></li>
+                 <li style=" width:180px;" id="liset2"><asp:Button ID="btnquxiao" runat="server" 
+                         Text="取消首页滚动通知公告" CssClass="t_set" onclick="btnquxiao_Click" 
+                 /></li>
 	</ul>	
 </div>
 <div class="t_title">

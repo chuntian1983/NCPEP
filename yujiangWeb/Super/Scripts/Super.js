@@ -18,6 +18,7 @@ jQuery(function ($) {
 });
 function GridView() {
     $('#tdg').datagrid({
+        height:350,
         nowrap: true,
         striped: true,
         url: '../Ashx/BidH.ashx?' + $.param({ action: "paging", DepaStatus: 6}),

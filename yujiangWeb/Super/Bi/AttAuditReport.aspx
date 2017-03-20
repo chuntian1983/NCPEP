@@ -41,7 +41,7 @@
         <iframe id="showScanImg" scrolling="no" frameborder="0" style="width: 100%; height: 100%;">
         </iframe>
     </div>
-    <div id="addCheck" title="审核意见" class="easyui-window" collapsible="false" minimizable="false"
+    <div id="addCheck" title="审核意见" class="easyui-window" collapsible="false" minimizable="false" closable="true"
         maximizable="false" icon="icon-save" modal="true" closable="false" style="width: 400px;
         height: 160px; padding: 5px; background: #fafafa;">
         <table>
@@ -321,9 +321,9 @@
             </tr>
             <tr align="center">
                 <td colspan="2">
-                    <a id="btnAdd" class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">添加</a>
+                    <%--<a id="btnAdd" class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">添加</a>
                     <a id="btnEdit" class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)"
-                        style="display: none">修改</a>
+                        style="display: none">修改</a>--%>
                 </td>
             </tr>
         </table>

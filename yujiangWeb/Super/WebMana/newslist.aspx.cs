@@ -252,5 +252,113 @@ namespace Web.Super.WebMana
         {
             BindDate();
         }
+
+        protected void btnnotice_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            string sysID = string.Empty;
+            foreach (RepeaterItem row in this.rep.Items)
+            {
+                if (row.ItemType == ListItemType.Item || row.ItemType == ListItemType.AlternatingItem)
+                {
+                    CheckBox chk = (CheckBox)row.FindControl("cbx");
+                    Label lbid = (Label)row.FindControl("lbid");
+                    if (chk.Checked)
+                    {
+                        i++;
+                        sysID = lbid.Text;
+                    }
+
+                }
+
+
+            }
+            if (i == 0)
+            {
+                MessageBox.Show(this, "请选择需要操作的项!");
+            }
+            else if (i > 1)
+            {
+                MessageBox.Show(this, "只能选择一项进行操作");
+            }
+            else
+            {
+                NCPEP.Bll.T_News newsbll = new NCPEP.Bll.T_News();
+                NCPEP.Model.T_News newsmodel = new NCPEP.Model.T_News();
+                newsmodel = newsbll.GetModel(int.Parse(sysID));
+                if (newsmodel!=null)
+                {
+                    if (newsmodel.NewsTypeId != 9)
+                    {
+                        MessageBox.Show(this, "请选择通知公告类型的信息进行设置！");
+                    }
+                    else 
+                    {
+                        NCPEP.Bll.T_Notice bllnotice = new NCPEP.Bll.T_Notice();
+                        NCPEP.Model.T_Notice modelnotice = new NCPEP.Model.T_Notice();
+                        modelnotice.newsid = sysID;
+                        if (bllnotice.Add(modelnotice) > 0)
+                        {
+                            MessageBox.Show(this, "设置成功！");
+                        }
+                    }
+                }
+                
+            }
+        }
+
+        protected void btnquxiao_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            string sysID = string.Empty;
+            foreach (RepeaterItem row in this.rep.Items)
+            {
+                if (row.ItemType == ListItemType.Item || row.ItemType == ListItemType.AlternatingItem)
+                {
+                    CheckBox chk = (CheckBox)row.FindControl("cbx");
+                    Label lbid = (Label)row.FindControl("lbid");
+                    if (chk.Checked)
+                    {
+                        i++;
+                        sysID = lbid.Text;
+                    }
+
+                }
+
+
+            }
+            if (i == 0)
+            {
+                MessageBox.Show(this, "请选择需要查看的项!");
+            }
+            else if (i > 1)
+            {
+                MessageBox.Show(this, "只能选择一项进行操作");
+            }
+            else
+            {
+                NCPEP.Bll.T_News newsbll = new NCPEP.Bll.T_News();
+                NCPEP.Model.T_News newsmodel = new NCPEP.Model.T_News();
+                newsmodel = newsbll.GetModel(int.Parse(sysID));
+                if (newsmodel != null)
+                {
+                    if (newsmodel.NewsTypeId != 9)
+                    {
+                        MessageBox.Show(this, "请选择通知公告类型的信息进行设置！");
+                    }
+                    else
+                    {
+                        NCPEP.Bll.T_Notice bllnotice = new NCPEP.Bll.T_Notice();
+                        
+
+                        if (bllnotice.DeleteNotice(sysID))
+                        {
+                            MessageBox.Show(this, "取消成功！");
+                        }
+                    }
+                }
+
+            }
+        }
     }
 }

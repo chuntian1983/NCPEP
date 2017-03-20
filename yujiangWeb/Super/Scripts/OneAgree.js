@@ -23,6 +23,7 @@ function slide(_title, _msg) {
 };
 function GridView() {
     $('#tdg').datagrid({
+        height:350,
         nowrap: true,
         striped: true,
         url: '../Ashx/BidH.ashx?' + $.param({ action: "paging", DepaStatus: 3, StandardMode: 2 }),

@@ -35,7 +35,7 @@ function GridView() {
         rownumbers: true,
         frozenColumns: [[
 { title: '编号', field: 'Id', width: 50, align: 'left', sortable: true },
-{ field: 'ApplicationType', title: '流转类型名称', width: 90, align: 'left', sortable: true, formatter: function (value, row, index) { return row.ApplicationType == 1 ? "出让方" : "意向受让方"; } },
+{ field: 'ApplicationType', title: '流转类型名称', width: 90, align: 'left', sortable: true, formatter: function (value, row, index) { var str = "出让方"; if (row.ApplicationType == 1) { str = "出让方备案"; } else if (row.ApplicationType == 2) { str = "受让方备案"; } else if (row.ApplicationType == 3) { str = "出让方申请"; } else if (row.ApplicationType == 4) { str = "意向受让方申请"; } return str; } },
 { field: 'MemberTypeCertificationName', title: '申请类型名称', width: 100, align: 'left', sortable: true },
 { field: 'TypeIndicatorName', title: '指标关系名称', width: 450, align: 'left', sortable: true },
 { field: 'CreateDate', title: '创建时间', width: 150, align: 'left', sortable: true }

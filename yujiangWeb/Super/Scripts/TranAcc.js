@@ -28,6 +28,7 @@ function GridView() {
         sortOrder: 'desc',
         fitColumns: false,
         rownumbers: true,
+        height:350,
         fit: false,
         onDblClickRow: function (rowIndex, rowData) {
             OnProcessClick(rowData.Id);
@@ -39,6 +40,11 @@ function GridView() {
 { field: 'OrgCode', title: '组织单位', width: 80, align: 'left', sortable: true },
 { field: 'oCode', title: '组织单位代码', width: 80, align: 'left', sortable: true, hidden: true },
 { field: 'FK_LiceTranId', title: '编号', width: 80, align: 'left', sortable: true, hidden: true },
+{ field: 'DepaStatus', title: '分管部门', width: 80, align: 'left', sortable: true, styler: function (value, row, index) {
+    if (row.DepaStatus == '市场信息科') { return 'background-color:green;color:white'; } else { return "" }
+}
+},
+
 { field: 'LiceTran', title: '出让方姓名', width: 80, align: 'left', sortable: true },
 { field: 'BidName', title: '标的名称', width: 80, align: 'left', sortable: true },
 { field: 'ReturnStatus', title: '状态', width: 80, align: 'left', sortable: true, formatter: function (value, row, index) { return row.ReturnStatus == 0 ? "<span style='color:blue;'>正常</span>" : "<span style='color:red;'>撤回<span>"; } }
@@ -57,8 +63,8 @@ function GridView() {
 { field: 'RelatesNum', title: '涉及农户数', width: 80, align: 'left', sortable: true },
 { field: 'Publicity', title: '公示期', width: 80, align: 'left', sortable: true },
 { field: 'UpManager', title: '上级审核', width: 80, align: 'left', sortable: true, hidden: true },
-{ field: 'DepaStatusId', title: '分管部门编号', width: 80, align: 'left', sortable: true, hidden: true },
-{ field: 'DepaStatus', title: '分管部门', width: 80, align: 'left', sortable: true }
+{ field: 'DepaStatusId', title: '分管部门编号', width: 80, align: 'left', sortable: true, hidden: true }
+
 ]],
         toolbar: [{
             id: 'btnundo',
@@ -74,8 +80,12 @@ function GridView() {
             handler: function () {
                 var rows = $('#tdg').datagrid('getSelections');
                 if (rows.length > 0) {
-                    $('#addCheck').window('open');
-                    $("#txtSay").val("审核通过");
+                    var fgid = rows[0].DepaStatusId;
+                    if (fgid == "2") {
+                        $('#addCheck').window('open');
+                        $("#txtSay").val("审核通过");
+                    }
+                    else { msgShow("提示", "您没有权限进行操作！"); }
                 }
                 else {
                     msgShow("提示", "您还没有选中要更改的列信息？", "question");
@@ -85,7 +95,7 @@ function GridView() {
             id: 'btnok',
             text: '详细信息',
             iconCls: 'icon-ok',
-            handler: function () {              
+            handler: function () {
                 var rows = $('#tdg').datagrid('getSelections');
                 if (rows.length > 0) {
                     $('#newAdd').window('open');
@@ -101,7 +111,7 @@ function GridView() {
                         $("#lblIDCard").text(data.T[0].IDCard);
                         $("#txtFK_LiceTranId").text(data.T[0].Name);
                         $("#txtOrgCode").text(data.T[0].OrgCode);
-                        $("#txtBidName").text(data.T[0].BidName);                 
+                        $("#txtBidName").text(data.T[0].BidName);
                         $("#lblAdmissibility").text(data.T[0].Admissibility);
                         $("#txtListingPrice").text(data.T[0].ListingPrice);
                         $("#txtStartDate").text(data.T[0].StartDate.substring(0, 10));

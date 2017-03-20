@@ -308,5 +308,24 @@ namespace NCPEP.Bll
                 return string.Empty;
             }
         }
+        public string GetTree(string orgcode)
+        {
+            try
+            {
+                //SysLogBll.Create("组织单位", "获取组织单位树形数据2", adminUser.AdminName);
+                string OrgCode = orgcode;
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.Append("[");
+                Organization modelData = dal.GetModel(OrgCode);
+                stringBuilder.Append("{\"id\":\"" + modelData.OrgCode + "\", \"text\":\"" + modelData.OrgShortName + "\",\"children\":[" + AddNodes(modelData.OrgCode) + "]}");
+                stringBuilder.Append("]");
+                return stringBuilder.ToString();
+            }
+            catch (Exception ex)
+            {
+                SystemErrorPlug.ErrorRecord("时间:[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "]类名:[" + this.GetType().Name + "],行号:[" + Component.GetLineNum().ToString() + "行],错误信息:[" + ex.Message + "]");
+                return string.Empty;
+            }
+        }
     }
 }

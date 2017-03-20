@@ -42,7 +42,7 @@
         </span>
     </div>
     <div id="newAdd" class="easyui-window" modal="true" collapsible="false" minimizable="false"
-        maximizable="false" icon="icon-save" style="width: 650px; height: 350px; padding: 5px;
+        maximizable="false" icon="icon-save" style="width: 80%; height: 90%; padding: 5px;
         background: #fafafa;">
         <form id="forms" runat="server">
         <table class="tb" border="0px" cellpadding="0" cellspacing="0">

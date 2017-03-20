@@ -18,6 +18,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <form runat="server" id="form1">
     <div class="top ">
         <div class="main ">
             <div class="topleft ">
@@ -66,5 +67,6 @@
         </div>
     </div>
     <uc1:WebFoot ID="WebFootControl" runat="server" />
+        </form>
 </body>
 </html>

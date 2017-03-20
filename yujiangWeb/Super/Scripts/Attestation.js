@@ -7,6 +7,8 @@
     $('#BidScan').window('close');
     $('#BidAuct').window('close');
     $('#BidClinch').window('close');
+//    $('#divjzs').window('close');
+    $('#ScanFile').window('close');
 });
 function msgShow(title, msgString, msgType) {
     $.messager.alert(title, msgString, msgType);
@@ -21,9 +23,10 @@ function slide(_title, _msg) {
 };
 function GridView() {
     $('#tdg').datagrid({
+        height: 350,
         nowrap: true,
         striped: true,
-        url: '../Ashx/AttAuRep.ashx?' + $.param({ action: "AssuranceList", DepaStatus: 4, StandardMode: 1, bt: "OK" }),
+        url: '../Ashx/AttAuRep.ashx?' + $.param({ action: "AssuranceList", DepaStatus: 7, StandardMode: 1, bt: "OK" }),
         remoteSort: false,
         sortName: 'Id',
         singleSelect: true,
@@ -46,8 +49,7 @@ function GridView() {
 ]], columns: [[
 { field: 'NoAssurance', title: '鉴证号', width: 80, align: 'left', sortable: true, formatter: function (value, row, index) { return "HJNJ" + row.NoAssurance; } },
 { field: 'ListingPrice', title: '挂牌价格', width: 80, align: 'left', sortable: true },
-{ field: 'StartDate', title: '转出开始时间', width: 80, align: 'left', sortable: true },
-{ field: 'EndDate', title: '转出结束时间', width: 80, align: 'left', sortable: true },
+
 { field: 'Ownership', title: '权属', width: 80, align: 'left', sortable: true },
 { field: 'Properties', title: '性质', width: 50, align: 'left', sortable: true },
 { field: 'TurnOut', title: '转出方式', width: 50, align: 'left', sortable: true },
@@ -65,20 +67,6 @@ function GridView() {
 }
 ]],
         toolbar: [{
-            id: 'btnattrep',
-            text: '鉴证',
-            iconCls: 'icon-filter',
-            handler: function () {
-                var rows = $('#tdg').datagrid('getSelections');
-                if (rows.length > 0) {
-                    $.get("../Ashx/AttAuRep.ashx?action=AuRep", { Id: rows[0].Id }, function (data) {
-                        msgShow("提示", data, "info");
-                    }, "text");
-                } else {
-                    msgShow("提示", "您还没有选中列的信息？", "question");
-                }
-            }
-        }, '-', {
             id: 'btnok',
             text: '详细信息',
             iconCls: 'icon-ok',
@@ -99,7 +87,7 @@ function GridView() {
                         $("#lblIDCard").text(data.T[0].IDCard);
                         $("#txtFK_LiceTranId").text(data.T[0].Name);
                         $("#txtOrgCode").text(data.T[0].OrgCode);
-                        $("#txtBidName").text(data.T[0].BidName);                    
+                        $("#txtBidName").text(data.T[0].BidName);
                         $("#lblAdmissibility").text(data.T[0].Admissibility);
                         $("#txtListingPrice").text(data.T[0].ListingPrice);
                         $("#txtStartDate").text(data.T[0].StartDate.substring(0, 10));
@@ -121,81 +109,138 @@ function GridView() {
                     msgShow("提示", "您还没有选中要查看的列信息？", "question");
                 }
             }
-        }, '-', {
-            id: 'btnadd',
-            text: '招标公告',
-            iconCls: 'icon-add',
+        }, '-',
+        {
+            id: 'btnattrep',
+            text: '鉴证',
+            iconCls: 'icon-filter',
             handler: function () {
                 var rows = $('#tdg').datagrid('getSelections');
                 if (rows.length > 0) {
-                    $('#BidPla').window('open');
-                    $.get("../Ashx/BidPlac.ashx?action=byId", { Id: rows[0].Id }, function (data) {
-                        if (null == data) {
-                            $("#btnAdd").show();
-                            $("#btnEdit").hide();
-                            $("#txtBidPlacardTitle").val(rows[0].BidName + "-招标公告事宜");
-                            $("#txtBidPlacardContent").val("");
-                            $("#txtId").val("0");
-                        } else {
-                            $("#btnAdd").hide();
-                            $("#btnEdit").show();
-                            $("#txtBidPlacardTitle").val(data.BidPlacardTitle);
-                            $("#txtBidPlacardContent").val(data.BidPlacardContent);
-                            $("#txtId").val(data.Id);
-                        }
-
-                    }, "json");
-                } else {
-                    msgShow("提示", "您还没有选中一列信息？", "question");
-                }
-            }
-        }, '-', {
-            id: 'btnedit',
-            text: '竞价单',
-            iconCls: 'icon-edit',
-            handler: function () {
-                var rows = $('#tdg').datagrid('getSelections');
-                if (rows.length > 0) {
-                    $('#BidAuct').window('open');
-                    $.get("../Ashx/BidTran.ashx?action=is", { Id: rows[0].Id }, function (data) {
-                        if (data == "0") {
-                            $("#btnAuct").show();
-                        } else {
-                            $("#btnAuct").hide();
-                        }
+                    $.get("../Ashx/AttAuRep.ashx?action=AuRep", { Id: rows[0].Id }, function (data) {
+                        msgShow("提示", data, "info");
                     }, "text");
-                    OnBidAuctionList(rows[0].Id);
                 } else {
-                    msgShow("提示", "您还没有选中一列信息？", "question");
+                    msgShow("提示", "您还没有选中列的信息？", "question");
                 }
             }
-        }, '-', {
-            id: 'btnsave',
-            text: '标成交附件',
-            iconCls: 'icon-save',
+        },
+        '-',
+        {
+            id: 'btnxiugai',
+            text: '鉴证修改',
+            iconCls: 'icon-filter',
             handler: function () {
                 var rows = $('#tdg').datagrid('getSelections');
                 if (rows.length > 0) {
-                    $('#BidScan').window('open');
-                    $("#BidScanPage").attr("src", "BidClinchScan.aspx?FK_BidId=" + rows[0].Id);
+
+                    //var fgid = rows[0].DepaStatus;
+                    //if (fgid != "产权鉴定科") {
+                    //    msgShow("提示", "您没有权限进行操作！请选择产权鉴定科的信息进行操作");
+                    //    return;
+                    //}
+                    WinOpen(rows[0].Id);
+                    $("#txtId").val(rows[0].Id);
+
+
                 } else {
-                    msgShow("提示", "您还没有选中一列信息？", "question");
+                    msgShow("提示", "您还没有选中列的信息？", "question");
                 }
             }
-        }, '-', {
-            id: 'btnsave',
-            text: '意向受让方信息',
-            iconCls: 'icon-man',
+        },
+         '-',
+        {
+            id: 'btnyulan',
+            text: '鉴证预览',
+            iconCls: 'icon-filter',
             handler: function () {
                 var rows = $('#tdg').datagrid('getSelections');
                 if (rows.length > 0) {
-                    $('#BidTrans').window('open');
-                    OnBidTraGridView('../Ashx/BidTran.ashx?' + $.param({ action: "list", Id: rows[0].Id }));
+                    window.open("jzsview.aspx?p="+rows[0].Id);  
+//                    WinOpen(rows[0].Id);
+//                    $("#txtId").val(rows[0].Id);
+
+
                 } else {
-                    msgShow("提示", "您还没有选中一列信息？", "question");
+                    msgShow("提示", "您还没有选中列的信息？", "question");
                 }
             }
-        }, '-'
+        },
+         '-', {
+             id: 'btnadd',
+             text: '招标公告',
+             iconCls: 'icon-add',
+             handler: function () {
+                 var rows = $('#tdg').datagrid('getSelections');
+                 if (rows.length > 0) {
+                     $('#BidPla').window('open');
+                     $.get("../Ashx/BidPlac.ashx?action=byId", { Id: rows[0].Id }, function (data) {
+                         if (null == data) {
+                             $("#btnAdd").show();
+                             $("#btnEdit").hide();
+                             $("#txtBidPlacardTitle").val(rows[0].BidName + "-招标公告事宜");
+                             $("#txtBidPlacardContent").val("");
+                             $("#txtId").val("0");
+                         } else {
+                             $("#btnAdd").hide();
+                             $("#btnEdit").show();
+                             $("#txtBidPlacardTitle").val(data.BidPlacardTitle);
+                             $("#txtBidPlacardContent").val(data.BidPlacardContent);
+                             $("#txtId").val(data.Id);
+                         }
+
+                     }, "json");
+                 } else {
+                     msgShow("提示", "您还没有选中一列信息？", "question");
+                 }
+             }
+         }, '-', {
+             id: 'btnedit',
+             text: '竞价单',
+             iconCls: 'icon-edit',
+             handler: function () {
+                 var rows = $('#tdg').datagrid('getSelections');
+                 if (rows.length > 0) {
+                     $('#BidAuct').window('open');
+                     $.get("../Ashx/BidTran.ashx?action=is", { Id: rows[0].Id }, function (data) {
+                         if (data == "0") {
+                             $("#btnAuct").show();
+                         } else {
+                             $("#btnAuct").hide();
+                         }
+                     }, "text");
+                     OnBidAuctionList(rows[0].Id);
+                 } else {
+                     msgShow("提示", "您还没有选中一列信息？", "question");
+                 }
+             }
+         }, '-', {
+             id: 'btnsave',
+             text: '标成交附件',
+             iconCls: 'icon-save',
+             handler: function () {
+                 var rows = $('#tdg').datagrid('getSelections');
+                 if (rows.length > 0) {
+                     $('#BidScan').window('open');
+                     $("#BidScanPage").attr("src", "BidClinchScan.aspx?FK_BidId=" + rows[0].Id);
+                 } else {
+                     msgShow("提示", "您还没有选中一列信息？", "question");
+                 }
+             }
+         }, '-', {
+             id: 'btnsave',
+             text: '意向受让方信息',
+             iconCls: 'icon-man',
+             handler: function () {
+                 var rows = $('#tdg').datagrid('getSelections');
+                 if (rows.length > 0) {
+                     $('#BidTrans').window('open');
+                     OnBidTraGridView('../Ashx/BidTran.ashx?' + $.param({ action: "list", Id: rows[0].Id }));
+                 } else {
+                     msgShow("提示", "您还没有选中一列信息？", "question");
+                 }
+             }
+         }, '-'
 ],
         pagination: true,
         pageSize: 10
@@ -382,4 +427,39 @@ function OnProcessClick(par) {
         vt += "主管意见时间：" + data.SuperSayDate.replace('T', ' ') + "</p>" : vt += "主管意见时间：</p>";
         $("#lblProcess").html(vt);
     }, "json");
+};
+//鉴证修改页面添加按钮
+//jQuery(function ($) {
+//    $("#jzsadd").click(function () {
+//        $('#form1').form('submit', {
+//            url: '../Ashx/Jzs.ashx?action=add',
+//            async: false,
+//            onSubmit: function () {
+//                return $(this).form('validate');
+//            },
+//            success: function (data) {
+//                
+//                OnEmptyTextClick();
+//                $('#divjzs').window('close');
+//                $('#tdg').datagrid('reload');
+//                msgShow("提示", data, "info");
+//            }
+//        });
+
+//    });
+//});
+//function OnEmptyTextClick() {
+//    $("#txtStartDatejzs").val("");
+//    $("#txtEndDatejzs").val("");
+//    $("#txtcjje").val("");
+//    $("#txthtbh").val("");
+//    $("#txtbeizhu").val("");
+
+
+//};
+function WinOpen(p) {
+
+    $('#ScanFile').window('open');
+    //    $("#ScanUpload").attr("src", "ScanUpload.aspx?p=" + p);
+    $("#ScanUpload").attr("src", "jzsedit.aspx?p=" + p);
 };

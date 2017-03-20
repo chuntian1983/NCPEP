@@ -53,9 +53,10 @@ function OnShowPermis(p) {
     $.get("../Ashx/Permis.ashx?action=list&flag=" + Math.random(), { AdminTypeId: p }, function (data) {
         var dt = data.T;
         if ("" != dt) {
-            for (var i = 0; i < dt.length; i++) {              
-                var node = $('#funTree').tree('find', dt[i].NodeId); 
-                $('#funTree').tree('check', node.target); 
+            for (var i = 0; i < dt.length; i++) {
+               //2017-1-12 修改不能选中的问题
+                var node = $('#funTree').tree('find', dt[i].SysFunId);
+                $('#funTree').tree('check', node.target);
             }
         }
     }, "json");

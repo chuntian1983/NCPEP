@@ -151,6 +151,27 @@ namespace Web
                                     model.OrgCode = str[0].Trim();
                                     model.OrgName = str[1].Trim();
                                     model.OrgShortName = str[1].Trim();
+                                    switch (level.ToString())
+                                    {
+                                        case "5":
+                                            model.OrgCode = model.OrgCode.Substring(0,2);
+                                            break;
+                                        case "4":
+                                            model.OrgCode = model.OrgCode.Substring(0, 4);
+                                            break;
+                                        case "3":
+                                            model.OrgCode = model.OrgCode.Substring(0, 6);
+                                            break;
+                                        case "2":
+                                            model.OrgCode = model.OrgCode.Substring(0, 9);
+                                            break;
+                                        case "1":
+                                            model.OrgName = str[2].Trim();
+                                            model.OrgShortName = str[2].Trim();
+                                            break;
+
+                                    }
+                                    
                                     model.Seq = 1;
                                     model.Level = level;
                                     model.UpOrgCode = ddldw.SelectedValue;

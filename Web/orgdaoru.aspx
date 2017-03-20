@@ -42,6 +42,8 @@
             <asp:Button
             ID="btncun" runat="server" Text="导入" onclick="btncun_Click" />
         </li>
+        <li>
+            <span>说明：导入的txt文件编码格式必须是utf-8</span> ,升级单位录入应该去掉后面的000</li>
         </ul>
     </div>
     </form>

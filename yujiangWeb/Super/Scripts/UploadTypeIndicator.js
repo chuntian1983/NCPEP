@@ -18,6 +18,7 @@ function GridView() {
     $('#tdg').datagrid({
         title: '上传指标类型信息列表',
         iconCls: 'icon-save',
+        pagination: false,
         nowrap: true,
         striped: true,
         url: '../ashx/UploadTypeIndicator.ashx?action=paging',
@@ -30,9 +31,12 @@ function GridView() {
         rownumbers: true,
         frozenColumns: [[
 { title: '编号', field: 'Id', width: 50, align: 'left', sortable: true },
-{ field: 'TypeIndicatorName', title: '上传指标类型名称', width: 450, align: 'left', sortable: true },
-{ field: 'CreateDate', title: '创建时间', width: 150, align: 'left', sortable: true }
+{ field: 'TypeIndicatorName', title: '上传指标类型名称', width: 450, align: 'left', sortable: true }
+
 ]],
+        columns: [[
+                    { field: 'CreateDate', title: '创建时间', width: 150, align: 'left', sortable: true }
+				]],
         toolbar: [{
             id: 'btnadd',
             text: '新建',
@@ -68,6 +72,32 @@ function GridView() {
                     msgShow("提示", "您还没有选中要修改的列信息？", "warning");
                 }
             }
+        }, '-', {
+            id: 'btndel',
+            text: '删除',
+            iconCls: 'icon-no',
+            handler: function () {
+                var rows = $('#tdg').datagrid('getSelections');
+                if (rows.length > 0) {
+                    var idList = "";
+                    for (var i = 0; i < rows.length; i++) {
+                        idList += rows[i].Id;
+                        if (i < rows.length - 1) { idList += ","; }
+                    }
+                    $.messager.confirm('询问提示', '您确定要删除选中的编号为 [' + idList + '] 的信息吗？', function (data) {
+                        if (data) {
+                            $.get("../ashx/UploadTypeIndicator.ashx?action=del", { idList: idList }, function (data) {
+                                slide("提示", data);
+                                $('#tdg').datagrid('reload');
+                                $('#tdg').datagrid('clearSelections');
+                            }, "text");
+                        }
+                    });
+                }
+                else {
+                    msgShow("提示", "您还没有选中要删除的列信息？", "question");
+                }
+            }
         }
 ],
         pagination: false
@@ -99,12 +129,13 @@ function OnUpdateClick() {
             return $(this).form('validate');
         },
         success: function (data) {
+            EmptyTextClick();
+            $('#newAdd').window('close');
             msgShow("提示", data, "info");
             $('#tdg').datagrid('reload');
         }
     });
-    EmptyTextClick();
-    $('#newAdd').window('close');
+   
 };
 jQuery(function ($) {
     $("#btnAdd").click(function () { OnCreateClick(); });
@@ -117,10 +148,12 @@ function OnCreateClick() {
             return $(this).form('validate');
         },
         success: function (data) {
+
+            EmptyTextClick();
+            $('#newAdd').window('close');
             msgShow("提示", data, "info");
             $('#tdg').datagrid('reload');
         }
     });
-    EmptyTextClick();
-    $('#newAdd').window('close');
+    
 };

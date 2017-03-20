@@ -23,6 +23,7 @@ function slide(_title, _msg) {
 };
 function GridView() {
     $('#tdg').datagrid({
+    height:350,
         nowrap: true,
         striped: true,
         url: '../Ashx/BidH.ashx?' + $.param({ action: "paging", DepaStatus: 3, StandardMode: 1 ,bt:"OK"}),
@@ -44,6 +45,7 @@ function GridView() {
 { field: 'oCode', title: '组织单位代码', width: 80, align: 'left', sortable: true, hidden: true },
 { field: 'FK_LiceTranId', title: '编号', width: 80, align: 'left', sortable: true, hidden: true },
 { field: 'LiceTran', title: '出让方姓名', width: 80, align: 'left', sortable: true },
+{ field: 'DepaStatus', title: '分管部门', width: 80, align: 'left', sortable: true },
 { field: 'ReturnStatus', title: '状态', width: 80, align: 'left', sortable: true, formatter: function (value, row, index) { return row.ReturnStatus == 0 ? "<span style='color:blue;'>正常</span>" : "<span style='color:red;'>撤回<span>"; } }
 ]], columns: [[
 { field: 'BidName', title: '标的名称', width: 80, align: 'left', sortable: true },
@@ -61,8 +63,8 @@ function GridView() {
 { field: 'RelatesNum', title: '涉及农户数', width: 80, align: 'left', sortable: true },
 { field: 'Publicity', title: '公示期', width: 80, align: 'left', sortable: true },
 { field: 'UpManager', title: '上级审核', width: 80, align: 'left', sortable: true, hidden: true },
-{ field: 'DepaStatusId', title: '分管部门编号', width: 80, align: 'left', sortable: true, hidden: true },
-{ field: 'DepaStatus', title: '分管部门', width: 80, align: 'left', sortable: true }
+{ field: 'DepaStatusId', title: '分管部门编号', width: 80, align: 'left', sortable: true, hidden: true }
+
 ]],
         toolbar: [{
             id: 'btnundo',

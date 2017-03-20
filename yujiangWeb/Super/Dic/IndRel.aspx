@@ -26,8 +26,10 @@
             流转类型：
             <select id="txtApplicationType" class="easyui-combobox">
                 <option value=""></option>
-                <option value="1">出让方</option>
-                <option value="2">意向受让方</option>
+                <option value="1">出让方备案</option>
+                <option value="3">出让方申请</option>
+                <option value="2">受让方备案</option>
+                <option value="4">意向受让方申请</option>
             </select>
             <a href="javascript:void(0)" id="btnQuery" class="easyui-linkbutton" iconcls="icon-search">
                 查看</a>

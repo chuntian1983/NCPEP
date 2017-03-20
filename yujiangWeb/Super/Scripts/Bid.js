@@ -1,9 +1,11 @@
 ﻿jQuery(function ($) {
     GridView();
-    $('#newAdd').window('close');
+        $('#newAdd').window('close');
+    
     $('#addOpinion').window('close');
     $('#ScanImg').window('close');
     $('#addCheck').window('close');
+    $('#ScanFile').window('close');
 });
 function msgShow(title, msgString, msgType) {
     $.messager.alert(title, msgString, msgType);
@@ -81,16 +83,13 @@ jQuery(function ($) {
 });
 function GridView() {
     $('#tdg').datagrid({
-        nowrap: true,
-        striped: true,
-        url: '../Ashx/BidH.ashx?' + $.param({ action: "paging", DepaStatus: 1 }),
-        remoteSort: false,
-        sortName: 'Id',
+        height: 350,
+        url: '../Ashx/BidH.ashx?' + $.param({ action: "paging2", DepaStatus: 1 }),
         singleSelect: true,
+        sortName: 'Id',
+
         sortOrder: 'desc',
-        fitColumns: false,
-        rownumbers: true,
-        fit: false,
+
         onDblClickRow: function (rowIndex, rowData) {
             OnProcessClick(rowData.Id);
             OnBidInfoGridView(rowData.Id);
@@ -101,14 +100,22 @@ function GridView() {
 { field: 'OrgCode', title: '组织单位', width: 80, align: 'left', sortable: true },
 { field: 'oCode', title: '组织单位代码', width: 80, align: 'left', sortable: true, hidden: true },
 { field: 'FK_LiceTranId', title: '编号', width: 80, align: 'left', sortable: true, hidden: true },
+{ field: 'DepaStatus', title: '分管部门', width: 80, align: 'left', sortable: true, styler: function (value, row, index) {
+    if (row.DepaStatus == '前台受理科') { return 'background-color:green;color:white'; } else { return "" }
+}
+},
+
 { field: 'LiceTran', title: '出让方姓名', width: 80, align: 'left', sortable: true },
 { field: 'BidName', title: '标的名称', width: 80, align: 'left', sortable: true },
 { field: 'ReturnStatus', title: '状态', width: 80, align: 'left', sortable: true, formatter: function (value, row, index) { return row.ReturnStatus == 0 ? "<span style='color:blue;'>正常</span>" : "<span style='color:red;'>撤回<span>"; }
 }
 ]], columns: [[
+{ field: 'string', title: '附件信息', width: 150, align: 'left', sortable: true, formatter: function (value, row, index) { return row.DepaStatus != '前台受理科' ? "<span style='color:blue;' onclick='OnUploadFileView(" + row.Id + ");'>查看附件</span>" : "<span style='color:blue;' onclick='OnUploadFile(" + row.Id + ");'>上传扫描件</span>"; } },
 { field: 'ListingPrice', title: '挂牌价格', width: 80, align: 'left', sortable: true },
 { field: 'StartDate', title: '转出开始时间', width: 80, align: 'left', sortable: true },
 { field: 'EndDate', title: '转出结束时间', width: 80, align: 'left', sortable: true },
+{ field: 'guimo', title: '规模', width: 80, align: 'left', sortable: true },
+{ field: 'danwei', title: '单位', width: 50, align: 'left', sortable: true },
 { field: 'Ownership', title: '权属', width: 80, align: 'left', sortable: true },
 { field: 'Properties', title: '性质', width: 50, align: 'left', sortable: true },
 { field: 'TurnOut', title: '转出方式', width: 50, align: 'left', sortable: true },
@@ -120,8 +127,8 @@ function GridView() {
 { field: 'RelatesNum', title: '涉及农户数', width: 80, align: 'left', sortable: true },
 { field: 'Publicity', title: '公示期', width: 80, align: 'left', sortable: true },
 { field: 'UpManager', title: '上级审核', width: 80, align: 'left', sortable: true, hidden: true },
-{ field: 'DepaStatusId', title: '分管部门编号', width: 80, align: 'left', sortable: true, hidden: true },
-{ field: 'DepaStatus', title: '分管部门', width: 80, align: 'left', sortable: true }
+{ field: 'DepaStatusId', title: '分管部门编号', width: 80, align: 'left', sortable: true, hidden: true }
+
 ]],
         toolbar: [{
             id: 'btnadd',
@@ -130,12 +137,13 @@ function GridView() {
             handler: function () {
                 $('#newAdd').window({ title: "添加出让标信息" });
                 $("#newAdd").window("open");
+
                 $("#btnAdd").show();
                 $("#btnEdit").hide();
-                $.get("../Ashx/BidH.ashx?action=max", function (data) {                  
+                $.get("../Ashx/BidH.ashx?action=max", function (data) {
                     $("#lblAdmissibility").text(data.N);
                     $("#txtAdmissibility").val(data.N);
-                    $("#txtTradingCenterName").textbox("setValue", data.O + "农村综合产权交易中心");     
+                    $("#txtTradingCenterName").textbox("setValue", data.O + "农村综合产权交易中心");
                 }, "json");
                 OnEmptyTextClick();
             }
@@ -146,6 +154,11 @@ function GridView() {
             handler: function () {
                 var rows = $('#tdg').datagrid('getSelections');
                 if (rows.length > 0) {
+                    var fgid = rows[0].DepaStatus;
+                    if (fgid != "前台受理科") {
+                        msgShow("提示", "您没有权限进行操作！请选择分管部门是前台受理科的进行操作");
+                        return;
+                    }
                     $.messager.confirm('询问提示', '您确定要删除选中的编号为 [' + rows[0].Id + '] 的信息吗？', function (data) {
                         if (data) {
                             $.get("../Ashx/BidH.ashx?action=del", { id: rows[0].Id, UpManager: rows[0].UpManager, OrgCode: rows[0].oCode }, function (data) {
@@ -171,11 +184,16 @@ function GridView() {
                         msgShow("提示", "修改信息只能选中一条！", "warning");
                         return;
                     }
+                    var fgid = rows[0].DepaStatus;
+                    if (fgid != "前台受理科") {
+                        msgShow("提示", "您没有权限进行操作！");
+                        return;
+                    }
                     $('#newAdd').window({ title: "修改出让标信息" });
                     $('#newAdd').window('open');
                     OnEmptyTextClick();
-                    $.get("../Ashx/BidH.ashx?action=by", { Id: rows[0].Id }, function (data) {           
-                        $("#lblAdmissibility").text(data.Admissibility);                      
+                    $.get("../Ashx/BidH.ashx?action=by", { Id: rows[0].Id }, function (data) {
+                        $("#lblAdmissibility").text(data.Admissibility);
                         $("#txtAdmissibility").val(data.Admissibility);
                         $("#txtOrgCode").combotree("setValue", data.OrgCode);
                         OnLoadLiceOrTran(data.OrgCode);
@@ -206,9 +224,14 @@ function GridView() {
                         $("#txtReturnStatus").val(data.ReturnStatus);
                         $("#txtDepaStatus").val(data.DepaStatus);
                         $("#txtAreContract").val(data.AreContract);
-                        $("#txtNoAssurance").val(data.NoAssurance);                       
+                        $("#txtNoAssurance").val(data.NoAssurance);
                         $("#txtContractNo").val(data.ContractNo);
                         $("#txtContractDate").val(data.ContractDate);
+
+                        $("#txtguimo").textbox("setValue", data.guimo);
+                        $("#comgmdw").combobox("setValue", data.danwei);
+                        $("#txtsrfjbtj").textbox("setValue", data.srfjbtj);
+                        $("#txtsfzclz").combobox("setValue", data.sfzclz);
                     }, "json");
                     $("#btnAdd").hide();
                     $("#btnEdit").show();
@@ -223,8 +246,12 @@ function GridView() {
             handler: function () {
                 var rows = $('#tdg').datagrid('getSelections');
                 if (rows.length > 0) {
-                    $('#addCheck').window('open');
-                    $("#txtSay").val("审核通过");
+                    var fgid = rows[0].DepaStatus;
+                    if (fgid == "前台受理科") {
+                        $('#addCheck').window('open');
+                        $("#txtSay").val("审核通过");
+                    }
+                    else { msgShow("提示", "您没有权限进行操作！"); }
                 }
                 else {
                     msgShow("提示", "您还没有选中要更改的列信息？", "question");
@@ -334,12 +361,13 @@ jQuery(function ($) {
                 return $(this).form('validate');
             },
             success: function (data) {
+                OnEmptyTextClick();
+                $('#newAdd').window('close');
+                $('#tdg').datagrid('reload');
                 msgShow("提示", data, "info");
             }
         });
-        OnEmptyTextClick();
-        $('#newAdd').window('close');
-        $('#tdg').datagrid('reload');
+        
     });
 });
 jQuery(function ($) {
@@ -439,4 +467,16 @@ function OnProcessClick(par) {
         vt += "主管意见时间：" + data.SuperSayDate.replace('T', ' ') + "</p>" : vt += "主管意见时间：</p>";
         $("#lblProcess").html(vt);
     }, "json");
+};
+function OnUploadFile(p) {
+
+    $('#ScanFile').window('open');
+    //    $("#ScanUpload").attr("src", "ScanUpload.aspx?p=" + p);
+    $("#ScanUpload").attr("src", "fujianupload.aspx?p=" + p);
+};
+function OnUploadFileView(p) {
+
+    $('#ScanFile').window('open');
+    //    $("#ScanUpload").attr("src", "ScanUpload.aspx?p=" + p);
+    $("#ScanUpload").attr("src", "fujianview.aspx?p=" + p);
 };

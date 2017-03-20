@@ -1,6 +1,7 @@
 ﻿jQuery(function ($) {
     GridView();
     $('#addPrint').window('close');
+    $('#ScanFile').window('close');
 });
 
 function GridView() {
@@ -28,8 +29,7 @@ function GridView() {
 { field: 'BidName', title: '标的名称', width: 80, align: 'left', sortable: true },
 { field: 'NoAssurance', title: '鉴证号', width: 80, align: 'left', sortable: true, formatter: function (value, row, index) { return "HJNJ" + row.NoAssurance; } },
 { field: 'ListingPrice', title: '挂牌价格', width: 80, align: 'left', sortable: true },
-{ field: 'StartDate', title: '转出开始时间', width: 80, align: 'left', sortable: true },
-{ field: 'EndDate', title: '转出结束时间', width: 80, align: 'left', sortable: true },
+
 { field: 'Ownership', title: '权属', width: 80, align: 'left', sortable: true },
 { field: 'Properties', title: '性质', width: 50, align: 'left', sortable: true },
 { field: 'TurnOut', title: '转出方式', width: 50, align: 'left', sortable: true },
@@ -59,7 +59,39 @@ function GridView() {
                     msgShow("提示", "您还没有选中要更改的列信息？", "question");
                 }
             }
-        }, '-'
+        }, '-',
+        {
+            id: 'btnyulan',
+            text: '鉴证预览',
+            iconCls: 'icon-filter',
+            handler: function () {
+                var rows = $('#tdg').datagrid('getSelections');
+                if (rows.length > 0) {
+                    window.open("jzsview.aspx?p=" + rows[0].Id);
+                    //                    WinOpen(rows[0].Id);
+                    //                    $("#txtId").val(rows[0].Id);
+
+
+                } else {
+                    msgShow("提示", "您还没有选中列的信息？", "question");
+                }
+            }
+        }, '-', {
+            id: 'btnprintsq',
+            text: '打印申请',
+            iconCls: 'icon-print',
+            handler: function () {
+                var rows = $('#tdg').datagrid('getSelections');
+                if (rows.length > 0) {
+                   
+                   
+                    WinOpen(rows[0].Id)
+                }
+                else {
+                    msgShow("提示", "您还没有选中要申请的列信息？", "question");
+                }
+            }
+        }
 ],
         pagination: true,
         pageSize: 30
@@ -75,16 +107,27 @@ function msgShow(title, msgString, msgType) {
 };
 jQuery(function ($) {
     $("#btnPrintAdd").click(function () {
+        var strid = $("#txtFK_BidId").val();
         $('#forms').form('submit', {
-            url: '../Ashx/BidPrint.ashx?action=add',
+            url: '../Ashx/BidPrint.ashx?action=add&id='+strid,
             async: false,
             onSubmit: function () {
                 return $(this).form('validate');
             },
             success: function (data) {
                 if ("OK" == data) {
-                window.showModelessDialog('attPrint.aspx?id=3','鉴证书打印','dialogWidth:1200px;dialogHeight:800px;dialogLeft:20px;dialogTop:15px;center:yes;resizable:yes;status:yes');
-                } else {
+                    //2016-10-13修改bug本来默认写死的是传的id=3showModelessDialog
+                    var id = $("#txtFK_BidId").val();
+                    //window.open('daying.aspx?id='+id,'鉴证书打印','width=1200px,height=800px,resizable=yes,status=yes');
+                    window.open('attprint.aspx?id=' + id, '鉴证书打印', 'width=1200px,height=800px,resizable=yes,status=yes');
+            }
+            else if ("1" == data) {
+                msgShow("提示", "您已经打印超过3次，请进行打印申请，通过之后进行打印", "info");
+                }
+            else if ("2" == data) {
+                msgShow("提示", "您选择的信息已经超过3次，正在进行打印申请，通过之后才可以进行打印", "info");
+            } 
+            else{
                     msgShow("提示", data, "info");
                 }
                 $('#addPrint').window('close');
@@ -92,3 +135,21 @@ jQuery(function ($) {
         });
     });
 });
+function WinOpen(p) {
+    
+    $.get("../Ashx/BidPrint.ashx?action=sqs", { pid:p},
+          function (data) {
+              if (data == "OK") {
+                  $('#ScanFile').window('open');
+                  //    $("#ScanUpload").attr("src", "ScanUpload.aspx?p=" + p);
+                  $("#ScanUpload").attr("src", "jzsdysq.aspx?p=" + p);
+              }
+              else if (data=="2") {
+                  msgShow("提示", "您选择的信息已结进行申请打印，通过之后才能进行打印。", "info");
+              } 
+              else{
+                  msgShow("提示", "您选择的信息可以进行打印，未超过3次限制，不用进行打印申请。", "info");
+              }
+          });
+   
+};

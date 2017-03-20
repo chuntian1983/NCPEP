@@ -49,18 +49,19 @@ jQuery(function ($) {
         $("#lblIntention3").html(tIntention);
     }, "json");
 });
-jQuery(function ($) {
-    OnShowBidClick(0);
-});
+//jQuery(function ($) {
+//    OnShowBidClick(0);
+//});
 var rowcount = 0;
 function OnShowBidClick(r) {
     $.get("Handler/WebSite.ashx?action=BidList&flag=" + Math.random(), { rows: r }, function (data) {
-        var tbid = "";
+        var tbid = "<ul>";
         var productData = data.T;
         if (productData == null) { rowcount = productData.length; }
         $.each(productData, function (i, n) {
-            tbid += "<ul><li>HJNS" + n.Admissibility + "</li><li class=\"gpwidth2\"><a href=\"BidDetails.aspx?t=" + n.FK_LiceTranId + "&id=" + n.Id + "\">" + n.BidName + "</a></li><li>" + n.StartDate.substring(0, 10) + "</li><li class=\"gpwidth3\">" + n.Properties + "</li><li>" + n.ListingPrice + "</li><li>" + n.EndDate.substring(0, 10) + "</li><li class=\"gpwidth1\"><a href=\"#\"><!--<img src=\"images/nc_30.jpg\">--></a></li></ul>";
+            tbid += "<li>HJNS" + n.Admissibility + "</li><li class=\"gpwidth2\"><a href=\"BidDetails.aspx?t=" + n.FK_LiceTranId + "&id=" + n.Id + "\">" + n.BidName + "</a></li><li>" + n.StartDate.substring(0, 10) + "</li><li class=\"gpwidth3\">" + n.Properties + "</li><li>" + n.ListingPrice + "</li><li>" + n.EndDate.substring(0, 10) + "</li><li class=\"gpwidth1\"><a href=\"#\"><!--<img src=\"images/nc_30.jpg\">--></a></li>";
         });
+        tbid += "</ul>";
         $("#ShowBidList").html(tbid);
         $("ShowBidList").fadeIn("slow");
     }, "json");

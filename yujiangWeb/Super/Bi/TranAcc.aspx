@@ -62,7 +62,7 @@
     </div>
     <div id="newAdd" title="出让标详细信息" class="easyui-window" modal="true" collapsible="false"
         minimizable="false" maximizable="false" icon="icon-save" style="width: 680px;
-        height: 420px; padding: 5px; background: #fafafa;">
+        height: 520px; padding: 5px; background: #fafafa;">
         <form id="forms" runat="server">
         <table border="0" class="table" cellpadding="0" cellspacing="0" width="625">
             <tr>

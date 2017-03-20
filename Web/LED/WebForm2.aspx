@@ -125,6 +125,12 @@ demo.onmouseout = function() {myInterval = setInterval(Marquee,speed);};
 -->
 </script>
 </center>
+    <div>
+        <script>
+            var va=<%=fileToDelete%>;
+            alert(va);
+        </script>
+    </div>
 </body>
 </html>
 

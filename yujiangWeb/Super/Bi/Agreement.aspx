@@ -301,6 +301,14 @@
                         height: 250px;" class="easyui-validatebox" missingmessage="必须填写" required="true"></textarea>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    上传附件
+                </td>
+                <td>
+                    <input type="file" name="fujian" id="txtfujian" />
+                </td>
+            </tr>
             <tr align="center">
                 <td colspan="2">
                     <a id="btnAdd" class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">添加</a>
@@ -352,13 +360,14 @@
             </tr>
             <tr>
                 <td align="center" height="35">
-                    几次竞价
+                    交易方式
                 </td>
                 <td>
                     <select id="tSeveralBid" name="tSeveralBid" class="easyui-combobox" style="width: 120px;">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
+                        <option value="1" selected="selected">协议</option>
+                        <option value="2">拍卖</option>
+                        <option value="3">招投标</option>
+                        <option value="4">其他</option>
                     </select>
                 </td>
                 <td align="center">
@@ -375,6 +384,12 @@
                 </td>
             </tr>
         </table>
+    </div>
+     <div id="opendiv" title="招标公告" class="easyui-window" modal="true" collapsible="false"
+        minimizable="false" maximizable="false" icon="icon-save" style="width: 700px;
+        height: 480px; padding: 5px; background: #fafafa;">
+        <iframe id="openif" scrolling="no" frameborder="0" style="width: 100%; height: 100%;">
+        </iframe>
     </div>
 </body>
 </html>

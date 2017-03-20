@@ -3,6 +3,25 @@
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <script src="Scripts/Default.js" type="text/javascript" language="javascript"></script>
+    <style type="text/css">
+        .gs {
+            line-height:40px;width:125px;
+        }
+        .gs2 {
+            line-height:40px;width:250px;
+        }
+        .gsys {
+            color:#e74c3c;
+        }
+        .tablegp {
+            border-collapse:collapse;
+            width:891px;
+        }
+        .tablegp td{
+            border:0px;
+
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <div class="tz">
@@ -60,7 +79,7 @@
         <div class="guapai_list">
             <div class="guapai_tt font1 ">
                 挂牌公示 <span>></span></div>
-            <div class="guapai_list_c1 clearfix">
+            <%--<div class="guapai_list_c1 clearfix">
                 <ul>
                     <li>项目编号</li>
                     <li>标的名称</li>
@@ -73,6 +92,32 @@
             <div id="divOut" style="overflow-y: scroll; border-bottom: 1px solid #d4ecfc">
                 <div id="ShowBidList" class="tr_list">
                 </div>
+            </div>--%>
+            <div style="width:891px; height:405px;">
+                <table class="tablegp">
+                    <tr style="background-color:#ebe8e8;">
+                        <td  class="gs gsys">项目编号</td>
+                        <td class="gs2 gsys">标的名称</td>
+                        <td class="gs gsys">项目类型</td>
+                        <td class="gs gsys">挂牌时间</td>
+                        <td class="gs gsys">公告价格</td>
+                        <td class="gs gsys">截止时间</td>
+                    </tr>
+                    
+                    <asp:Repeater ID="repgpgs" runat="server">
+                        <ItemTemplate>
+                            <tr>
+                        <td  class="gs">HJNS<%#Eval("Admissibility") %></td>
+                        <td class="gs2"><a href="BidDetails.aspx?t=<%#Eval("FK_LiceTranId") %>&id=<%#Eval("id") %>"> <%#Eval("BidName").ToString().Length>15?Eval("bidname").ToString().Substring(0,15):Eval("bidname").ToString() %></a></td>
+                                <td class="gs"><%#GetLXname(Eval("Properties").ToString()) %></td>
+                        <td class="gs"><%#DateTime.Parse( Eval("StartDate").ToString()).ToString("yyyy-MM-dd") %></td>
+                        
+                        <td class="gs"><%#Eval("ListingPrice") %></td>
+                        <td class="gs"><%#DateTime.Parse( Eval("EndDate").ToString()).ToString("yyyy-MM-dd") %></td>
+                    </tr>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </table>
             </div>
         </div>
         <div class="guapai_xitong">
@@ -168,7 +213,7 @@
         <div class="jigou_list ">
             <div id="jgc1">
                 <ul>
-                    <span id="orgList"></span>
+                    <%=fzjg %>
                 </ul>
             </div>
         </div>

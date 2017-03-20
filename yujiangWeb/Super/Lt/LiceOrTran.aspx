@@ -28,7 +28,9 @@
             <a id="btnDel" class="easyui-linkbutton" icon="icon-no" href="javascript:void(0)">删除</a>
             <a id="btnCut" class="easyui-linkbutton" icon="icon-cut" href="javascript:void(0)">修改</a>
             <a id="btnLock" class="easyui-linkbutton" icon="icon-lock" href="javascript:void(0)">
-                审核</a> &nbsp;&nbsp;&nbsp;&nbsp; 类型：
+                审核</a> 
+                <a id="btnfanshenhe" class="easyui-linkbutton" icon="icon-lock" href="javascript:void(0)">
+                反审核</a>&nbsp;&nbsp;&nbsp;&nbsp; 类型：
             <select name="tLiceTranType" class="easyui-combotree" id="tLiceTranType" style="width: 120px;">
             </select>
             &nbsp;&nbsp;姓名：
@@ -44,6 +46,7 @@
         </table>
     </div>
     <div id="east" region="east" title="附件信息" style="width: 50%;">
+    <a href="pdf.rar" >pdf插件下载</a> 
         <table id="ltScan">
         </table>
     </div>
@@ -168,7 +171,7 @@
     <div id="ScanImg" class="easyui-window" modal="true" collapsible="false" minimizable="false"
         maximizable="false" icon="icon-save" style="width: 700px; height: 480px; padding: 5px;
         background: #fafafa;">
-        <iframe id="showScanImg" scrolling="no" frameborder="0" style="width: 100%; height: 100%;">
+        <iframe id="showScanImg" scrolling="no" src="fujianview.aspx" frameborder="0" style="width: 100%; height: 100%;">
         </iframe>
     </div>
     <div id="addCheck" title="审核意见" class="easyui-window" collapsible="false" minimizable="false"

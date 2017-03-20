@@ -100,7 +100,8 @@ function OnltScanGridView(par) {
         onDblClickRow: function (rowIndex, rowData) {
             $('#ScanImg').window('open');
             $('#ScanImg').window({ title: rowData.FK_UploadTypeIndicatorId });
-            $("#showScanImg").attr("src", "../Scan/lt/" + rowData.FK_LiceTranId + "/" + rowData.ScanUrl);
+            //$("#showScanImg").attr("src", "../Scan/lt/" + rowData.FK_LiceTranId + "/" + rowData.ScanUrl);
+            $("#showScanImg").attr("src", "fujianview.aspx?id=" + rowData.FK_LiceTranId + "|" + rowData.ScanUrl);
         },
         columns: [[
         { title: '编号', field: 'Id', width: 30, align: 'left', sortable: true },
@@ -115,7 +116,8 @@ function OnltScanGridView(par) {
             iconCls: 'icon-no',
             handler: function () {
                  var rows = $('#ltScan').datagrid('getSelections');
-                if (rows.length > 0) {
+                 if (rows.length > 0) {
+                     
                     $.messager.confirm('询问提示', '您确定要删除选中的编号为 [' + rows[0].Id + '] 的信息吗？', function (data) {
                         if (data) {
                             $.get("../ashx/LiTrScan.ashx?action=del", { Id: rows[0].Id }, function (data) {
@@ -162,7 +164,7 @@ function GridView() {
 ]],
         columns: [[
 { field: 'AuditType', title: '审核状态', width: 80, align: 'left', sortable: true, formatter: function (value, row, index) { return row.AuditType == 0 ? "<span style='color:red;'>等待审核</span>" : "<span style='color:blue;'>审核通过</span>"; } },
-{ field: 'string', title: '上传', width: 150, align: 'left', sortable: true, formatter: function (value, row, index) { return "<span style='color:blue;' onclick='OnUploadFile(" + row.Id + ");'>上传扫描件</span>"; } },
+{ field: 'string', title: '上传', width: 150, align: 'left', sortable: true, formatter: function (value, row, index) { return row.AuditType == 1 ? "<span style='color:blue;'>双击查看附件</span>" : "<span style='color:blue;' onclick='OnUploadFile(" + row.Id + ");'>上传扫描件</span>"; } },
 { field: 'MemberTypeId', title: '类型', width: 80, align: 'left', sortable: true },
 { field: 'Name', title: '姓名', width: 80, align: 'left', sortable: true },
 { field: 'Addr', title: '住址', width: 150, align: 'left', sortable: true },
@@ -203,6 +205,12 @@ jQuery(function ($) {
     $("#btnDel").click(function () {
         var rows = $('#tdg').datagrid('getSelections');
         if (rows.length > 0) {
+            var rowzt = rows[0].AuditType;
+            if (rowzt == 1) {
+                msgShow("提示", "审核通过的信息不能删除！", "warning");
+                return;
+
+            }
             $.messager.confirm('询问提示', '您确定要删除选中的编号为 [' + rows[0].Id + '] 的信息吗？', function (data) {
                 if (data) {
                     $.get("../Ashx/LiceOrTran.ashx?action=del", { id: rows[0].Id }, function (data) {
@@ -222,6 +230,12 @@ jQuery(function ($) {
     $("#btnCut").click(function () {
         var rows = $('#tdg').datagrid('getSelections');
         if (rows.length > 0) {
+            var rowzt = rows[0].AuditType;
+            if (rowzt == 1) {
+                msgShow("提示", "审核通过的信息不能进行修改！", "warning");
+                return;
+
+            }
             if (rows.length > 1) {
                 msgShow("提示", "修改信息只能选中一条！", "warning");
                 return;
@@ -259,6 +273,33 @@ jQuery(function ($) {
     $("#btnLock").click(function () {
         $('#addCheck').window('open');
         $("#txtAuditSay").val("审核通过");
+    });
+});
+//反审核
+jQuery(function ($) {
+    
+    $("#btnfanshenhe").click(function () {
+        var rows = $('#tdg').datagrid('getSelections');
+        if (rows.length > 0) {
+            var rowzt = rows[0].AuditType;
+            if (rowzt != 1) {
+                msgShow("提示", "审核通过的信息才能进行反审核！", "warning");
+                return;
+
+            }
+            $.messager.confirm('询问提示', '您确定要反审核选中的编号为 [' + rows[0].Id + '] 的信息吗？', function (data) {
+                if (data) {
+                    $.get("../Ashx/LiceOrTran.ashx?action=fanshenhe", { id: rows[0].Id }, function (data) {
+                        slide("提示", data);
+                        $('#tdg').datagrid('reload');
+                        $('#tdg').datagrid('clearSelections');
+                    }, "text");
+                }
+            });
+        }
+        else {
+            msgShow("提示", "您还没有选中信息？", "question");
+        }
     });
 });
 function OnEmptyTextClick() {
@@ -305,6 +346,7 @@ jQuery(function ($) {
 });
 jQuery(function ($) {
     $("#btnCreate").click(function () {
+       
         $('#forms').form('submit', {
             url: '../Ashx/LiceOrTran.ashx?action=add',
             async: false,
@@ -312,12 +354,14 @@ jQuery(function ($) {
                 return $(this).form('validate');
             },
             success: function (data) {
+                
                 msgShow("提示", data, "info");
+                OnEmptyTextClick();
+                $('#newAdd').window('close');
+                $('#tdg').datagrid('reload');
             }
         });
-        OnEmptyTextClick();
-        $('#newAdd').window('close');
-        $('#tdg').datagrid('reload');
+        
     });
 });
 jQuery(function ($) {
@@ -337,6 +381,8 @@ jQuery(function ($) {
     });
 });
 function OnUploadFile(p) {
+
     $('#ScanFile').window('open');
-    $("#ScanUpload").attr("src", "ScanUpload.aspx?p=" + p);
+    //    $("#ScanUpload").attr("src", "ScanUpload.aspx?p=" + p);
+    $("#ScanUpload").attr("src", "fujianupload.aspx?p=" + p);
 };

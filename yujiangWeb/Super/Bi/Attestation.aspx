@@ -15,10 +15,11 @@
     <script src="../Scripts/Attestation.js" type="text/javascript" language="javascript"></script>
 </head>
 <body class="easyui-layout">
+<form id="form1" runat="server">
     <div region="north" title="出让标信息列表" split="true" style="height: 415px; border: 0px;"
         border="false">
         &nbsp;&nbsp;标的名称：
-        <input type="text" id="tBidName" class="easyui-textbox" style="width: 300px;" required="true" />
+        <input type="text" id="tBidName" class="easyui-textbox" style="width: 300px;"  />
         <a href="javascript:void(0)" id="btnQuery" class="easyui-linkbutton" iconcls="icon-search">
             搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: Blue;">(支持模糊查询)</span>
         <table id="tdg">
@@ -43,8 +44,8 @@
     </div>
     <div id="newAdd" title="出让标详细信息" class="easyui-window" modal="true" collapsible="false"
         minimizable="false" maximizable="false" icon="icon-save" style="width: 680px;
-        height: 420px; padding: 5px; background: #fafafa;">
-        <form id="forms" runat="server">
+        height: 90%; padding: 5px; background: #fafafa;">
+        
         <table border="0" class="table" cellpadding="0" cellspacing="0" width="625">
             <tr>
                 <td align="right" height="35" colspan="5">
@@ -277,8 +278,9 @@
                 </td>
             </tr>
         </table>
-        </form>
+        
     </div>
+   
     <div id="BidPla" title="招标公告" class="easyui-window" modal="true" collapsible="false"
         minimizable="false" maximizable="false" icon="icon-save" style="width: 680px;
         height: 360px; padding: 5px; background: #fafafa;">
@@ -327,5 +329,12 @@
             toolbar="#tb">
         </table>
     </div>
+    <div id="ScanFile" title="鉴证书修改信息" class="easyui-window" collapsible="false" minimizable="false"
+        maximizable="false" icon="icon-save" modal="true" style="width: 650px; height: 90%;
+        padding: 5px; background: #fafafa;">
+        <iframe id="ScanUpload" scrolling="no" frameborder="0" style="width: 100%; height: 100%;">
+        </iframe>
+    </div>
+    </form>
 </body>
 </html>

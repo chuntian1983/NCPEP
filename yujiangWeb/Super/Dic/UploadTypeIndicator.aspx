@@ -18,20 +18,22 @@
 </head>
 <body class="easyui-layout" style="overflow-y: hidden" scroll="no">
     <div region="center">
+    <div id="mainCenter" style="width: 100%; height: 100%;">
         <table id="tdg">
         </table>
+        </div>
     </div>
     <div id="newAdd" class="easyui-window" modal="true" collapsible="false" minimizable="false" maximizable="false"
-        icon="icon-save" style="width: 400px; height: 150px; padding: 5px; background: #fafafa;">
+        icon="icon-save" style="width: 500px; height: 150px; padding: 5px; background: #fafafa;">
         <form id="forms" runat="server">
         <table class="tb" border="0px" cellpadding="0" cellspacing="0">
             <tr>
-                <td style="width: 100px" height="43">
+                <td style="width: 150px" height="43">
                      上传指标类型名称<span style="color: Red;">*</span>
                 </td>
                 <td>
                     <input type="text" name="TypeIndicatorName" id="txtTypeIndicatorName" maxlength="100" class="easyui-validatebox"
-                        style="width: 200px;" missingmessage="上传指标类型名称必须填写" data-options="required:true,validType:'length[2,10]'" />
+                        style="width: 300px;" missingmessage="上传指标类型名称必须填写" data-options="required:true,validType:'length[2,100]'" />
                 </td>
             </tr>
             <tr>

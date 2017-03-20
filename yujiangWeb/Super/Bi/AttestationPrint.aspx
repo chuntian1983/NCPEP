@@ -19,12 +19,14 @@
     <div region="north" title=" " split="true" style="height: 65px; border: 0px;" border="false">
         &nbsp;&nbsp;标的名称：
         <input type="text" id="tBidName" class="easyui-textbox" style="width: 300px;" required="true" />
-        <a href="javascript:void(0)" id="btnQuery" class="easyui-linkbutton" iconcls="icon-search">
-            搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: Blue;">(支持模糊查询)</span>
+        <a href="javascript:void(0)" id="btnQuery" class="easyui-linkbutton" iconcls="icon-search">搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: Blue;">(支持模糊查询)</span>
     </div>
     <div region="center">
-        <table id="tdg">
-        </table>
+        注意：打印只能打印3次，超过3次需要重新申请，通过之后才可以打印。
+        <div class="easyui-layout" style="height: 95%">
+            <table id="tdg">
+            </table>
+        </div>
     </div>
     <div id="addPrint" title="打印理由" class="easyui-window" collapsible="false" minimizable="false"
         maximizable="false" icon="icon-save" modal="true" closable="true" style="width: 400px;
@@ -47,6 +49,12 @@
         <input type="hidden" id="txtId" name="Id" value="0" />
         <input type="hidden" id="txtFK_BidId" name="FK_BidId" />
         </form>
+        <div id="ScanFile" title="打印申请" class="easyui-window" collapsible="false" minimizable="false"
+        maximizable="false" icon="icon-save" modal="true" style="width: 650px; height: 90%;
+        padding: 5px; background: #fafafa;">
+        <iframe id="ScanUpload" scrolling="no" frameborder="0" style="width: 100%; height: 100%;">
+        </iframe>
+    </div>
     </div>
 </body>
 </html>

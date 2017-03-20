@@ -41,7 +41,9 @@ namespace Web.Super.WebMana
             {
                 BindDll();
                 BindData();
+                
             }
+            
         }
         protected void BindDll()
         {
@@ -65,7 +67,7 @@ namespace Web.Super.WebMana
                 this.txtNewsSubheading.Text = model.NewsSubheading;
                 this.txtNewsTitle.Text = model.NewsTitle;
                 this.txtNewsTypeId.Text = model.NewsTypeId.ToString();//新闻类型
-                
+                this.ddlzt.SelectedValue = model.ztbz;
                 this.txtsj.Text = model.CreateDate.ToString("yyyy-MM-dd");
                 this.content1.Value = model.NewsContent;
                 this.HyperLink1.NavigateUrl = "../../newsimg/max/"+model.NewsImg;
@@ -144,9 +146,9 @@ namespace Web.Super.WebMana
             model.Editor = adminUser.AdminName;
             model.IsCheck = 0;
             model.Keyword = this.txtKeyword.Text;
-            model.NewsContent = this.txtContent.Text;
+            model.NewsContent = this.content1.Value;
 
-           
+            model.Content = this.txtContent.Text;
             model.NewsSource = this.txtNewsSource.Text;
             model.NewsSubheading = this.txtNewsSubheading.Text;
             model.NewsTitle = this.txtNewsTitle.Text;

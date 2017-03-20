@@ -1,5 +1,5 @@
 @charset "utf-8";
-.list_wz{line-height: 28px;height: 28px;background: none;}
+.list_wz{line-height: 28px;height: 28px;background: none; text-align:left;}
 .list{border:1px solid #d9d9d9; padding:0 20px;}
 /*列表*/
 .list_ul{width: 1106px;border-bottom: 1px dotted #B2B2B2;padding:20px 0;}

@@ -34,7 +34,7 @@
         </table>
     </div>
     <div id="newAdd" class="easyui-window" modal="true" collapsible="false" minimizable="false"
-        maximizable="false" icon="icon-save" style="width: 680px; height: 420px; padding: 5px;
+        maximizable="false" icon="icon-save" style="width: 85%; height: 90%; padding: 5px;
         background: #fafafa;">
         <form id="forms" runat="server">
         <table border="0" class="table" cellpadding="0" cellspacing="0" width="625">
@@ -277,6 +277,12 @@
         minimizable="false" maximizable="false" icon="icon-save" style="width: 700px;
         height: 480px; padding: 5px; background: #fafafa;">
         <iframe id="showScanImg" scrolling="no" frameborder="0" style="width: 100%; height: 100%;">
+        </iframe>
+    </div>
+    <div id="ScanFile" title="附件信息" class="easyui-window" collapsible="false" minimizable="false"
+        maximizable="false" icon="icon-save" modal="true" style="width: 650px; height: 90%;
+        padding: 5px; background: #fafafa;">
+        <iframe id="ScanUpload" scrolling="no" frameborder="0" style="width: 100%; height: 100%;">
         </iframe>
     </div>
 </body>

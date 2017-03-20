@@ -13,19 +13,23 @@
     <script src="../Scripts/easyUI/locale/easyui-lang-zh_CN.js" type="text/javascript"
         language="javascript"></script>
     <script src="../Scripts/Bid.js" type="text/javascript" language="javascript"></script>
+    
 </head>
 <body class="easyui-layout">
-    <div region="north" title="出让标信息列表" split="true" style="height: 415px; border: 0px;"
-        border="false">
+    <div region="north" title="出让标信息列表" split="true" style="height:400px;overflow: hidden; border: 0px;" border="false">
+          <div id="tool">
         &nbsp;&nbsp;标的名称：
         <input type="text" id="tBidName" class="easyui-textbox" style="width: 300px;" required="true" />
         <a href="javascript:void(0)" id="btnQuery" class="easyui-linkbutton" iconcls="icon-search">
             搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: Blue;">(支持模糊查询)</span>
-        <table id="tdg">
+            </div>
+              <div class="easyui-layout" fit="true" style=" height:360px;">
+        <table id="tdg" >
         </table>
+        </div>
     </div>
     <div id="west" region="west" title="退回审核信息" style="width: 45%;">
-        <table id="BidInfo">
+        <table id="BidInfo" style=" height:310px;">
         </table>
     </div>
     <div id="center" region="center" title="审核意见" style="width: 25%;">
@@ -35,9 +39,10 @@
         <table id="Scan">
         </table>
     </div>
-    <div id="newAdd" class="easyui-window" modal="true" collapsible="false" minimizable="false"
-        maximizable="false" icon="icon-save" style="width: 680px; height: 420px; padding: 5px;
+    <div id="newAdd" class="easyui-window" modal="false" collapsible="false" minimizable="false"
+        maximizable="false" icon="icon-save" style="width: 80%; height: 95%; padding: 5px;
         background: #fafafa;">
+         <%-- <div id="newAdd" style="display: none; width: 100%; height: 100%; ">--%>
         <form id="forms" runat="server">
         <table border="0" class="table" cellpadding="0" cellspacing="0" width="625">
             <tr>
@@ -139,7 +144,7 @@
                 </td>
             </tr>
             <tr>
-                <td height="399" rowspan="11" width="35" align="center">
+                <td height="399" rowspan="12" width="35" align="center">
                     标<br />
                     的<br />
                     基<br />
@@ -157,6 +162,21 @@
             </tr>
             <tr>
                 <td height="35" align="center">
+                    标的规模
+                </td>
+                <td colspan="3">
+                    <input type="text" name="guimo" id="txtguimo" maxlength="100" class="easyui-textbox"
+                        style="width: 150px;" missingmessage="必须填写" data-options="required:true" />
+                        <select id="comgmdw" class="easyui-combobox" name="gmdw" style="width:80px;">
+    <option value="亩" selected="selected">亩</option>
+    <option value="平方米">平方米</option>
+    <option value="台">台</option>
+    
+</select>
+                </td>
+            </tr>
+            <tr>
+                <td height="35" align="center">
                     挂牌价格
                 </td>
                 <td colspan="3">
@@ -166,7 +186,7 @@
             </tr>
             <tr>
                 <td height="35" align="center">
-                    拟转出期限
+                    挂牌期限
                 </td>
                 <td colspan="3">
                     起
@@ -248,7 +268,7 @@
                     </select>
                 </td>
                 <td align="center">
-                    交易低价
+                    交易底价
                 </td>
                 <td>
                     <input type="text" name="LowTransaction" id="txtLowTransaction" maxlength="100" class="easyui-textbox"
@@ -273,6 +293,21 @@
             </tr>
             <tr>
                 <td height="35" align="center">
+                    是否再次流转</td>
+                <td>
+                    <select type="text" name="sfzclz" id="txtsfzclz" 
+                        class="easyui-combobox" style="width: 150px;"
+                        missingmessage="必须填写" data-options="required:true">
+                        <option value="否">否</option>
+                        <option value="是">是</option>
+                    </select></td>
+                <td align="center">
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td height="35" align="center">
                     挂牌方式
                 </td>
                 <td>
@@ -289,6 +324,17 @@
             </tr>
             <tr>
                 <td height="35" align="center">
+                     受让方<br />
+                    
+                    应当具备<br />
+                    
+                    的情况</td>
+                <td colspan="4">
+                    <textarea name="srfjbtj" cols="65" rows="8" class="easyui-validatebox" id="txtsrfjbtj"
+                        ></textarea></td>
+            </tr>
+            <tr>
+                <td height="35" align="center">
                     是否提交上级
                 </td>
                 <td>
@@ -301,7 +347,7 @@
                 <td align="center">
                     交易中心名称
                 </td>
-                <td>
+                <td colspan=2>
                     <input type="text" name="TradingCenterName" id="txtTradingCenterName" maxlength="100"
                         class="easyui-textbox" style="width: 150px;" />
                 </td>
@@ -353,6 +399,12 @@
                 </td>
             </tr>
         </table>
+    </div>
+    <div id="ScanFile" title="附件信息" class="easyui-window" collapsible="false" minimizable="false"
+        maximizable="false" icon="icon-save" modal="true" style="width: 650px; height: 90%;
+        padding: 5px; background: #fafafa;">
+        <iframe id="ScanUpload" scrolling="no" frameborder="0" style="width: 100%; height: 100%;">
+        </iframe>
     </div>
 </body>
 </html>

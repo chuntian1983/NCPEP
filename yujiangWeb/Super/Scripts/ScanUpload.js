@@ -50,22 +50,23 @@ function OnCheckImg(ControlName) {
     if (location != "") {
         var point = location.lastIndexOf(".");
         var type = location.substr(point).toLowerCase();
-        if (type == ".jpg" || type == ".gif" || type == ".jpeg" || type == ".png") {
+        if (type == ".jpg" || type == ".gif" || type == ".jpeg" || type == ".png" || type == ".pdf") {
             var imgSize = 0;
             if (window.navigator.userAgent.indexOf("Firefox") >= 1) {
                 imgSize = imgDom.files[0].fileSize;
             } else {
                 imgSize = imgDom.fileSize;
             }
-            if (imgSize > 102400) {
-                msgShow("提示", "图片大小请不要大于100KB", "info");
+            alert(imgSize);
+            if (imgSize > 10240000) {
+                msgShow("提示", "附件大小请不要大于10m", "info");
                 return false;
             }
         }
         else {
             var afile = $("#" + ControlName);
             afile.replaceWith(afile.clone());
-            msgShow("提示", "只能上传jpg,jpge,gif,png格式的图片", "info");
+            msgShow("提示", "只能上传jpg,jpge,gif,png,pdf格式的附件", "info");
             return false;
         }
     }

@@ -23,7 +23,7 @@
     <div region="north" split="false" border="false" style="overflow: hidden; height: 85px;
         background-image: url(images/bg.jpg); line-height: 20px; color: #fff;">
         <div class="topbg1">
-            <div class="topleft1">
+            <div class="topleft1" >
                 <% =Application["OrgShortName"] %><%= Application["AllTitle"]%></div>
             <div class="topright1">
                 <span id="v" runat="server"></span>&nbsp;&nbsp;

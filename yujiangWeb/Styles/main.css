@@ -153,5 +153,6 @@ background: url(../images/xian.jpg) no-repeat right top;
 	color: #fff; height: 40px; overflow: hidden; text-align: center;margin-bottom: 20px;}
 .banshi{ overflow:hidden; float:left;}
 .banshi li{ padding-left:10px; line-height:28px;  height:28px; overflow:hidden;}
-.tr_list{}
+.tr_list{border: 1px solid #cec6c6; border-top:0; border-collapse: 0; border-spacing: 0; width:100%;font-size: 14px;}
+.tr_list th{background-color: #c0ddff; height: 30px; line-height: 30px; color:#ff4504; }
 .tr_list li{ float:left; width:125px; padding-left:2px; line-height:28px; height:28px;}

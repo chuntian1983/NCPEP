@@ -7,6 +7,7 @@
     $('#BidScan').window('close');
     $('#BidAuct').window('close');
     $('#BidClinch').window('close');
+    $('#opendiv').window('close');
 });
 function msgShow(title, msgString, msgType) {
     $.messager.alert(title, msgString, msgType);
@@ -21,6 +22,7 @@ function slide(_title, _msg) {
 };
 function GridView() {
     $('#tdg').datagrid({
+        height: 350,
         nowrap: true,
         striped: true,
         url: '../Ashx/BidH.ashx?' + $.param({ action: "pagingA", DepaStatus: 3, StandardMode: 1 }),
@@ -43,6 +45,7 @@ function GridView() {
 { field: 'FK_LiceTranId', title: '编号', width: 80, align: 'left', sortable: true, hidden: true },
 { field: 'LiceTran', title: '出让方姓名', width: 80, align: 'left', sortable: true },
 { field: 'BidName', title: '标的名称', width: 80, align: 'left', sortable: true },
+{ field: 'DepaStatus', title: '分管部门', width: 80, align: 'left', sortable: true },
 { field: 'ReturnStatus', title: '状态', width: 80, align: 'left', sortable: true, formatter: function (value, row, index) { return row.ReturnStatus == 0 ? "<span style='color:blue;'>正常</span>" : "<span style='color:red;'>撤回<span>"; } }
 ]], columns: [[
 { field: 'ListingPrice', title: '挂牌价格', width: 80, align: 'left', sortable: true },
@@ -59,8 +62,8 @@ function GridView() {
 { field: 'RelatesNum', title: '涉及农户数', width: 80, align: 'left', sortable: true },
 { field: 'Publicity', title: '公示期', width: 80, align: 'left', sortable: true },
 { field: 'UpManager', title: '上级审核', width: 80, align: 'left', sortable: true, hidden: true },
-{ field: 'DepaStatusId', title: '分管部门编号', width: 80, align: 'left', sortable: true, hidden: true },
-{ field: 'DepaStatus', title: '分管部门', width: 80, align: 'left', sortable: true }
+{ field: 'DepaStatusId', title: '分管部门编号', width: 80, align: 'left', sortable: true, hidden: true }
+
 ]],
         toolbar: [{
             id: 'btnok',
@@ -83,7 +86,7 @@ function GridView() {
                         $("#lblIDCard").text(data.T[0].IDCard);
                         $("#txtFK_LiceTranId").text(data.T[0].Name);
                         $("#txtOrgCode").text(data.T[0].OrgCode);
-                        $("#txtBidName").text(data.T[0].BidName);                    
+                        $("#txtBidName").text(data.T[0].BidName);
                         $("#lblAdmissibility").text(data.T[0].Admissibility);
                         $("#txtListingPrice").text(data.T[0].ListingPrice);
                         $("#txtStartDate").text(data.T[0].StartDate.substring(0, 10));
@@ -112,30 +115,32 @@ function GridView() {
             handler: function () {
                 var rows = $('#tdg').datagrid('getSelections');
                 if (rows.length > 0) {
-                    $('#BidPla').window('open');
-                    $.get("../Ashx/BidPlac.ashx?action=byId", { Id: rows[0].Id }, function (data) {
-                        if (null == data) {
-                            $("#btnAdd").show();
-                            $("#btnEdit").hide();
-                            $("#txtBidPlacardTitle").val(rows[0].BidName + "-招标公告事宜");
-                            $("#txtBidPlacardContent").val("");
-                            $("#txtId").val("0");
-                        } else {
-                            $("#btnAdd").hide();
-                            $("#btnEdit").show();
-                            $("#txtBidPlacardTitle").val(data.BidPlacardTitle);
-                            $("#txtBidPlacardContent").val(data.BidPlacardContent);
-                            $("#txtId").val(data.Id);
-                        }
+                    // $('#BidPla').window('open');
+                    $('#opendiv').window('open');
+                    Opendiv(rows[0].Id);
+//                    $.get("../Ashx/BidPlac.ashx?action=byId", { Id: rows[0].Id }, function (data) {
+//                        if (null == data) {
+//                            $("#btnAdd").show();
+//                            $("#btnEdit").hide();
+//                            $("#txtBidPlacardTitle").val(rows[0].BidName + "-招标公告事宜");
+//                            $("#txtBidPlacardContent").val("");
+//                            $("#txtId").val("0");
+//                        } else {
+//                            $("#btnAdd").hide();
+//                            $("#btnEdit").show();
+//                            $("#txtBidPlacardTitle").val(data.BidPlacardTitle);
+//                            $("#txtBidPlacardContent").val(data.BidPlacardContent);
+//                            $("#txtId").val(data.Id);
+//                        }
 
-                    }, "json");
+//                    }, "json");
                 } else {
                     msgShow("提示", "您还没有选中一列信息？", "question");
                 }
             }
         }, '-', {
             id: 'btnedit',
-            text: '竞价交易',
+            text: '组织交易',
             iconCls: 'icon-edit',
             handler: function () {
                 var rows = $('#tdg').datagrid('getSelections');
@@ -259,7 +264,7 @@ jQuery(function ($) {
             msgShow("提示", "你还没有填写公告信息！", "info");
             return;
         }
-        $.get("../Ashx/BidPlac.ashx?action=add", { FK_BidId: $('#tdg').datagrid('getSelections')[0].Id, BidPlacardTitle: $("#txtBidPlacardTitle").val(), BidPlacardContent: $("#txtBidPlacardContent").val(), Id: $("#txtId").val() }, function (data) {
+        $.post("../Ashx/BidPlac.ashx?action=add", { FK_BidId: $('#tdg').datagrid('getSelections')[0].Id, BidPlacardTitle: $("#txtBidPlacardTitle").val(), BidPlacardContent: $("#txtBidPlacardContent").val(), Id: $("#txtId").val(),fujian:$("txtfujian").val() }, function (data) {
             msgShow("提示", data, "info");
             $('#BidPla').window('close');
         }, "text");
@@ -395,3 +400,16 @@ jQuery(function ($) {
         }, "text");
     });
 });
+
+
+function Opendiv(p) {
+
+    $('#opendiv').window('open');
+    //    $("#ScanUpload").attr("src", "ScanUpload.aspx?p=" + p);
+    $("#openif").attr("src", "Zbgg.aspx?p=" + p);
+};
+
+function closeIframe() {
+    alert("iframe里的close调用本函数");
+    $("#opendiv").window('close');
+}

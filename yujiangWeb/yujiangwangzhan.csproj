@@ -20,6 +20,11 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -479,6 +484,7 @@
     <Content Include="NewsList.aspx" />
     <Content Include="PlacardDetails.aspx" />
     <Content Include="PlacardList.aspx" />
+    <Content Include="reg.aspx" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\BidDetail.js" />
     <Content Include="Scripts\BidList.js" />
@@ -506,13 +512,56 @@
     <Content Include="Styles\images\search.png" />
     <Content Include="Styles\listnew.css" />
     <Content Include="Styles\style.css" />
+    <Content Include="Super\Bi\Agreement.aspx" />
     <Content Include="Super\Bi\AttAuditReport.aspx" />
     <Content Include="Super\Bi\AttContractNo.aspx" />
+    <Content Include="Super\Bi\Attestation.aspx" />
+    <Content Include="Super\Bi\AttestationPrint.aspx" />
+    <Content Include="Super\Bi\AttPrint.aspx" />
     <Content Include="Super\Bi\AuditReport.aspx" />
+    <Content Include="Super\Bi\BidClinchScan.aspx" />
     <Content Include="Super\Bi\BidContrScan.aspx" />
+    <Content Include="Super\Bi\Biddangan.aspx" />
+    <Content Include="Super\Bi\BidPage.aspx" />
+    <Content Include="Super\Bi\BidTr.aspx" />
+    <Content Include="Super\Bi\Bidview.aspx" />
+    <Content Include="Super\Bi\daying.aspx" />
+    <Content Include="Super\Bi\fujianUpload.aspx" />
+    <Content Include="Super\Bi\fujianuploadsrf.aspx" />
+    <Content Include="Super\Bi\fujianview.aspx" />
+    <Content Include="Super\Bi\Head.aspx" />
+    <Content Include="Super\Bi\Headsqs.aspx" />
+    <Content Include="Super\Bi\jzsdysq.aspx" />
+    <Content Include="Super\Bi\jzsedit.aspx" />
+    <Content Include="Super\Bi\jzsview.aspx" />
+    <Content Include="Super\Bi\OneAgree.aspx" />
+    <Content Include="Super\Bi\Super.aspx" />
+    <Content Include="Super\Bi\Supersqs.aspx" />
+    <Content Include="Super\Bi\TranAcc.aspx" />
+    <Content Include="Super\Bi\TwoAgree.aspx" />
+    <Content Include="Super\Bi\Xmbeian.aspx" />
+    <Content Include="Super\Bi\Xmbeiansh.aspx" />
+    <Content Include="Super\Bi\Zbgg.aspx" />
+    <Content Include="Super\Bi\zs.jpg" />
     <Content Include="Super\Data\Summary.aspx" />
     <Content Include="Super\Files\Demands.aspx" />
+    <Content Include="Super\Images\col.png" />
+    <Content Include="Super\Images\cut.png" />
+    <Content Include="Super\Images\del.png" />
+    <Content Include="Super\Images\edit.png" />
     <Content Include="Super\Images\login_bg.jpg" />
+    <Content Include="Super\Images\mbg.png" />
+    <Content Include="Super\Images\news.png" />
+    <Content Include="Super\Lt\Acrobat.pdf" />
+    <Content Include="Super\Lt\fujianUpload.aspx" />
+    <Content Include="Super\Lt\fujianview.aspx" />
+    <Content Include="Super\Lt\jquery.media.js" />
+    <Content Include="Super\Lt\LiceOrTran.aspx" />
+    <Content Include="Super\Lt\pdf.rar" />
+    <Content Include="Super\Lt\ScanUpload.aspx" />
+    <Content Include="Super\Lt\WebForm1.aspx" />
+    <Content Include="Super\rg\rg.aspx" />
+    <Content Include="Super\Scan\warning.aspx" />
     <Content Include="Super\Scripts\Arbi.js" />
     <Content Include="Super\Scripts\AttAuditReport.js" />
     <Content Include="Super\Scripts\AttContractNo.js" />
@@ -520,13 +569,18 @@
     <Content Include="Super\Scripts\AuditReport.js" />
     <Content Include="Super\Scripts\BidContrScan.js" />
     <Content Include="Super\Scripts\Change.js" />
+    <Content Include="Super\Scripts\dangan.js" />
+    <Content Include="Super\Scripts\Headsps.js" />
     <Content Include="Super\Scripts\link.js" />
     <Content Include="Super\Scripts\OneAgree.js" />
+    <Content Include="Super\Scripts\print.js" />
     <Content Include="Super\Scripts\print\CheckActivX.js" />
     <Content Include="Super\Scripts\print\install_lodop.exe" />
     <Content Include="Super\Scripts\Summary.js" />
+    <Content Include="Super\Scripts\Supersqs.js" />
     <Content Include="Super\Scripts\TwoAgree.js" />
     <Content Include="Super\Scripts\UpPass.js" />
+    <Content Include="Super\Scripts\userjm.js" />
     <Content Include="Super\Scripts\WebBProgress.js" />
     <Content Include="Styles\list.css" />
     <Content Include="Styles\main.css" />
@@ -535,18 +589,6 @@
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Styles\pagination.css" />
     <Content Include="Styles\user.css" />
-    <Content Include="Super\Bi\Agreement.aspx" />
-    <Content Include="Super\Bi\Attestation.aspx" />
-    <Content Include="Super\Bi\AttestationPrint.aspx" />
-    <Content Include="Super\Bi\AttPrint.aspx" />
-    <Content Include="Super\Bi\BidClinchScan.aspx" />
-    <Content Include="Super\Bi\BidPage.aspx" />
-    <Content Include="Super\Bi\BidTr.aspx" />
-    <Content Include="Super\Bi\Head.aspx" />
-    <Content Include="Super\Bi\OneAgree.aspx" />
-    <Content Include="Super\Bi\Super.aspx" />
-    <Content Include="Super\Bi\TranAcc.aspx" />
-    <Content Include="Super\Bi\TwoAgree.aspx" />
     <Content Include="Super\Default.aspx" />
     <Content Include="Super\Dic\AdminType.aspx" />
     <Content Include="Super\Dic\IndRel.aspx" />
@@ -577,8 +619,6 @@
     <Content Include="Super\Images\Seal\zx.png" />
     <Content Include="Super\Images\tabicons.png" />
     <Content Include="Super\Index.aspx" />
-    <Content Include="Super\Lt\LiceOrTran.aspx" />
-    <Content Include="Super\Lt\ScanUpload.aspx" />
     <Content Include="Super\Main.aspx" />
     <Content Include="Super\Power\Permis.aspx" />
     <Content Include="Super\Power\Roleper.aspx" />
@@ -1244,6 +1284,8 @@
     <Content Include="Super\Scripts\WebBTrans.js" />
     <Content Include="Super\Scripts\WebInten.js" />
     <Content Include="Super\Scripts\WebUser.js" />
+    <Content Include="Super\Scripts\Xmbeian.js" />
+    <Content Include="Super\Scripts\Xmbeiansh.js" />
     <Content Include="Super\SoftReg.aspx" />
     <Content Include="Super\Styles\default.css" />
     <Content Include="Super\Styles\login.css" />
@@ -1275,8 +1317,11 @@
     <Content Include="Super\WebMana\Scripts\uploadify-cancel.png" />
     <Content Include="Super\WebMana\Scripts\uploadify.css" />
     <Content Include="Super\WebMana\Scripts\uploadify.swf" />
-    <Content Include="Super\WebMana\WebInten.aspx" />
+    <Content Include="Super\WebMana\Upload.ashx" />
     <Content Include="Super\WebMana\User.aspx" />
+    <Content Include="Super\WebMana\WebInten.aspx" />
+    <Content Include="Super\WebMana\yqadd.aspx" />
+    <Content Include="Super\WebMana\yqlist.aspx" />
     <Content Include="Super\Zc\Arbi.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="User\Intention.aspx" />
@@ -1425,6 +1470,13 @@
       <DependentUpon>PlacardList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reg.aspx.cs">
+      <DependentUpon>reg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reg.aspx.designer.cs">
+      <DependentUpon>reg.aspx</DependentUpon>
+    </Compile>
     <Compile Include="sfz.aspx.cs">
       <DependentUpon>sfz.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1490,6 +1542,9 @@
     </Compile>
     <Compile Include="Super\Ashx\JobType.ashx.cs">
       <DependentUpon>JobType.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Ashx\Jzs.ashx.cs">
+      <DependentUpon>Jzs.ashx</DependentUpon>
     </Compile>
     <Compile Include="Super\Ashx\LiceOrTran.ashx.cs">
       <DependentUpon>LiceOrTran.ashx</DependentUpon>
@@ -1575,6 +1630,9 @@
     <Compile Include="Super\Ashx\WebUser.ashx.cs">
       <DependentUpon>WebUser.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Super\Ashx\Xmbeian.ashx.cs">
+      <DependentUpon>Xmbeian.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Super\Bi\Agreement.aspx.cs">
       <DependentUpon>Agreement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1638,6 +1696,13 @@
     <Compile Include="Super\Bi\BidContrScan.aspx.designer.cs">
       <DependentUpon>BidContrScan.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Super\Bi\Biddangan.aspx.cs">
+      <DependentUpon>Biddangan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\Biddangan.aspx.designer.cs">
+      <DependentUpon>Biddangan.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Super\Bi\BidPage.aspx.cs">
       <DependentUpon>BidPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1652,12 +1717,75 @@
     <Compile Include="Super\Bi\BidTr.aspx.designer.cs">
       <DependentUpon>BidTr.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Super\Bi\Bidview.aspx.cs">
+      <DependentUpon>Bidview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\Bidview.aspx.designer.cs">
+      <DependentUpon>Bidview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Bi\daying.aspx.cs">
+      <DependentUpon>daying.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\daying.aspx.designer.cs">
+      <DependentUpon>daying.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Bi\fujianUpload.aspx.cs">
+      <DependentUpon>fujianUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\fujianUpload.aspx.designer.cs">
+      <DependentUpon>fujianUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Bi\fujianuploadsrf.aspx.cs">
+      <DependentUpon>fujianuploadsrf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\fujianuploadsrf.aspx.designer.cs">
+      <DependentUpon>fujianuploadsrf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Bi\fujianview.aspx.cs">
+      <DependentUpon>fujianview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\fujianview.aspx.designer.cs">
+      <DependentUpon>fujianview.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Super\Bi\Head.aspx.cs">
       <DependentUpon>Head.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Super\Bi\Head.aspx.designer.cs">
       <DependentUpon>Head.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Bi\Headsqs.aspx.cs">
+      <DependentUpon>Headsqs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\Headsqs.aspx.designer.cs">
+      <DependentUpon>Headsqs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Bi\jzsdysq.aspx.cs">
+      <DependentUpon>jzsdysq.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\jzsdysq.aspx.designer.cs">
+      <DependentUpon>jzsdysq.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Bi\jzsedit.aspx.cs">
+      <DependentUpon>jzsedit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\jzsedit.aspx.designer.cs">
+      <DependentUpon>jzsedit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Bi\jzsview.aspx.cs">
+      <DependentUpon>jzsview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\jzsview.aspx.designer.cs">
+      <DependentUpon>jzsview.aspx</DependentUpon>
     </Compile>
     <Compile Include="Super\Bi\OneAgree.aspx.cs">
       <DependentUpon>OneAgree.aspx</DependentUpon>
@@ -1673,6 +1801,13 @@
     <Compile Include="Super\Bi\Super.aspx.designer.cs">
       <DependentUpon>Super.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Super\Bi\Supersqs.aspx.cs">
+      <DependentUpon>Supersqs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\Supersqs.aspx.designer.cs">
+      <DependentUpon>Supersqs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Super\Bi\TranAcc.aspx.cs">
       <DependentUpon>TranAcc.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1686,6 +1821,27 @@
     </Compile>
     <Compile Include="Super\Bi\TwoAgree.aspx.designer.cs">
       <DependentUpon>TwoAgree.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Bi\Xmbeian.aspx.cs">
+      <DependentUpon>Xmbeian.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\Xmbeian.aspx.designer.cs">
+      <DependentUpon>Xmbeian.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Bi\Xmbeiansh.aspx.cs">
+      <DependentUpon>Xmbeiansh.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\Xmbeiansh.aspx.designer.cs">
+      <DependentUpon>Xmbeiansh.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Bi\Zbgg.aspx.cs">
+      <DependentUpon>Zbgg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\Zbgg.aspx.designer.cs">
+      <DependentUpon>Zbgg.aspx</DependentUpon>
     </Compile>
     <Compile Include="Super\Data\Summary.aspx.cs">
       <DependentUpon>Summary.aspx</DependentUpon>
@@ -1778,6 +1934,20 @@
     <Compile Include="Super\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Super\Lt\fujianUpload.aspx.cs">
+      <DependentUpon>fujianUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Lt\fujianUpload.aspx.designer.cs">
+      <DependentUpon>fujianUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Lt\fujianview.aspx.cs">
+      <DependentUpon>fujianview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Lt\fujianview.aspx.designer.cs">
+      <DependentUpon>fujianview.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Super\Lt\LiceOrTran.aspx.cs">
       <DependentUpon>LiceOrTran.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1791,6 +1961,13 @@
     </Compile>
     <Compile Include="Super\Lt\ScanUpload.aspx.designer.cs">
       <DependentUpon>ScanUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Lt\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Lt\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Super\Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>
@@ -1812,6 +1989,17 @@
     </Compile>
     <Compile Include="Super\Power\Roleper.aspx.designer.cs">
       <DependentUpon>Roleper.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\rg\rg.aspx.cs">
+      <DependentUpon>rg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\rg\rg.aspx.designer.cs">
+      <DependentUpon>rg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Scan\warning.aspx.cs">
+      <DependentUpon>warning.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Super\SoftReg.aspx.cs">
       <DependentUpon>SoftReg.aspx</DependentUpon>
@@ -1970,6 +2158,13 @@
     <Compile Include="Super\WebMana\newsview.aspx.designer.cs">
       <DependentUpon>newsview.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Super\WebMana\User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\WebMana\User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Super\WebMana\WebInten.aspx.cs">
       <DependentUpon>WebInten.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1977,12 +2172,19 @@
     <Compile Include="Super\WebMana\WebInten.aspx.designer.cs">
       <DependentUpon>WebInten.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Super\WebMana\User.aspx.cs">
-      <DependentUpon>User.aspx</DependentUpon>
+    <Compile Include="Super\WebMana\yqadd.aspx.cs">
+      <DependentUpon>yqadd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Super\WebMana\User.aspx.designer.cs">
-      <DependentUpon>User.aspx</DependentUpon>
+    <Compile Include="Super\WebMana\yqadd.aspx.designer.cs">
+      <DependentUpon>yqadd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\WebMana\yqlist.aspx.cs">
+      <DependentUpon>yqlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\WebMana\yqlist.aspx.designer.cs">
+      <DependentUpon>yqlist.aspx</DependentUpon>
     </Compile>
     <Compile Include="Super\Zc\Arbi.aspx.cs">
       <DependentUpon>Arbi.aspx</DependentUpon>
@@ -2172,10 +2374,13 @@
     <Content Include="Super\Ashx\BidContractScanH.ashx" />
     <Content Include="Super\Ashx\Link.ashx" />
     <Content Include="Super\Ashx\TwoAgreeH.ashx" />
+    <Content Include="Super\Ashx\Jzs.ashx" />
+    <Content Include="Super\Ashx\Xmbeian.ashx" />
+    <Content Include="Super\Bi\Bi.rar" />
+    <None Include="Properties\PublishProfiles\配置文件1.pubxml" />
     <None Include="Super\Scan\caution.log" />
     <Content Include="Super\Ashx\TranPro.ashx" />
     <None Include="Super\Scripts\print\npActiveXFirefox4x.xpi" />
-    <Content Include="Super\WebMana\Upload.ashx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NCPEP.Bll\NCPEP.Bll.csproj">

@@ -82,6 +82,7 @@ namespace Web.Super.WebMana
             
             model.NumClicks = 0;
             model.OrgCode = adminUser.OrgCode;
+            model.ztbz = this.ddlzt.SelectedValue;
             NCPEP.Bll.T_News bll = new NCPEP.Bll.T_News();
             int fid= bll.Add(model);
             if (fid>0)

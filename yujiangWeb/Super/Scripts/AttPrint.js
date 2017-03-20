@@ -36,10 +36,23 @@
 var LODOP = document.getElementById("LODOP");
 function btnPrintClick() {
     CreateOneFormPage();
+    LODOP.PREVIEW();
+    //LODOP.PRINT();
+};
+function btnPrintClick2() {
+    CreateOneFormPage2();
+
     LODOP.PRINT();
 };
 function CreateOneFormPage() {
-    var strFormHtml = "<body>" + document.getElementById("showPage").innerHTML + "</body>";
+var strBodyStyle = "<style>" + document.getElementById("style1").innerHTML + "</style>";
+    var strFormHtml =strBodyStyle + "<body>" + document.getElementById("showPage").innerHTML + "</body>";
+    LODOP.SET_PRINT_PAGESIZE(0, 3700, 2600, "");
+    LODOP.ADD_PRINT_HTM(0, 0, 3700, 2600, strFormHtml);
+};
+function CreateOneFormPage2() {
+var strBodyStyle = "<style>" + document.getElementById("style1").innerHTML + "</style>";
+    var strFormHtml =strBodyStyle + "<body>" + document.getElementById("showPage2").innerHTML + "</body>";
     LODOP.SET_PRINT_PAGESIZE(0, 3700, 2600, "");
     LODOP.ADD_PRINT_HTM(0, 0, 3700, 2600, strFormHtml);
 };
@@ -50,36 +63,42 @@ Request = {
     }
 };
 jQuery(function ($) {
+ var nian = <%=nian %>;   
+        var yue = <%=yue %>;   
+        var ri= <%=ri %>;  
+        $("#txtnian").text(nian);//年
+        $("#txtyue").text(yue);//月
+        $("#txtri").text(ri);//日
+        alert('dddd');
     $.get("../Ashx/BidH.ashx?action=print", { Id: Request.QueryString("id") }, function (data) {
-        $("#txtnjz").text("HJNJ");
-        $("#txtxmbh").text("HJNS" + data.T[0].Admissibility);
-        $("#txtdjh").text(data.T[0].NoAssurance);
-        $("#txtjycp").text(data.T[0].BidName);
-        $("#txtsyqr").text(data.T[0].Owner);
-        $("#txtzcf").text(data.T[0].BidName);
-        $("#txtzcxwpzjg").text(data.T[0].FeedingMechanism);
-        $("#txtzcfdb").text(data.T[0].BidName);
-        $("#txtzcsfz").text(data.T[0].BidName);
-        $("#txtsrf").text(data.T[0].BidName);
-        $("#txtsrfddb").text(data.T[0].BidName);
-        $("#txtgsxz").text(data.T[0].BidName);
-        $("#txtzczb").text(data.T[0].BidName);
-        $("#txtsrsfz").text(data.T[0].BidName);
-        $("#txtbdjbqk").text(data.T[0].BidBasic);
-        $("#txtzcqx").text("自" + data.T[0].StartDate.substring(0, 10) + "起 至" + data.T[0].EndDate.substring(0, 10) + "止");
-        $("#txtqqjg").text(data.T[0].RightsBodies);
-        $("#txtqzbh").text(data.T[0].WarrantNumber);
-        $("#txtzcfs").text(data.T[0].TurnOut);
-        $("#txtjyfs").text(data.T[0].StandardMode);
-        $("#txtjydj").text(data.T[0].LowTransaction);
-        $("#txtcjje").text(data.T[0].Turnover);
-        $("#txthtqsrq").text(data.T[0].ContractDate);
-        $("#txthtbh").text(data.T[0].ContractNo);
-        $("#txtbeizhu").text("");
-        var _date = new Date();
-        $("#txtnian").text(_date.getYear());
-        $("#txtyue").text(_date.getMonth()+1);
-        $("#txtri").text(_date.getDay());
+    //2016-10-13 wh添加注释修改赋值代码本来bug都默认赋值同一个字段
+        $("#txtnjz").text("HJNJ");//农鉴字
+        $("#txtxmbh").text("HJNS" + data.T[0].Admissibility);//项目编号
+        $("#txtdjh").text(data.T[0].NoAssurance);//项目第几号
+        $("#txtjycp").text(data.T[0].BidName);//交易产品
+        $("#txtsyqr").text(data.T[0].Owner);//所有权人
+        $("#txtzcf").text(data.T[0].LName);//转出方
+        $("#txtzcxwpzjg").text(data.T[0].TradingCenterName); //转出批准机构
+        $("#txtzcfdb").text(data.T[0].LName);//转出方代表
+        $("#txtzcsfz").text(data.T[0].IDCard); //转出方身份证
+        $("#txtsrf").text(data.T[0].Name);//受让方
+        $("#txtsrfddb").text(data.T[0].Name); //法定代表人
+        $("#txtgsxz").text(data.T[0].TypeCertificationName); //公司性质
+        $("#txtzczb").text(data.T[0].Capital); //注册资本
+        $("#txtsrsfz").text(data.T[0].BidName);//注册号身份证
+        $("#txtbdjbqk").text(data.T[0].BidBasic);//标的基本情况
+        $("#txtzcqx").text("自" + data.T[0].StartDate.substring(0, 10) + "起 至" + data.T[0].EndDate.substring(0, 10) + "止");//转出期限
+        $("#txtqqjg").text(data.T[0].RightsBodies);//确权机构
+        $("#txtqzbh").text(data.T[0].WarrantNumber);//权证编号
+        $("#txtzcfs").text(data.T[0].TurnOut);//转出方式
+        $("#txtjyfs").text(data.T[0].StandardMode);//交易方式
+        $("#txtjydj").text(data.T[0].LowTransaction);//交易底价
+        $("#txtcjje").text(data.T[0].Turnover);//成交金额
+        $("#txthtqsrq").text(data.T[0].ContractDate);//合同签署日期
+        $("#txthtbh").text(data.T[0].ContractNo);//合同编号
+        $("#txtbeizhu").text("");//备注
+        
+        
         
     }, "json");
 });

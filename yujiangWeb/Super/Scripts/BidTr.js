@@ -1,7 +1,8 @@
 ﻿jQuery(function ($) {
     GridView();
     $('#newAdd').window('close');
-    $('#ScanImg').window('close');  
+    $('#ScanImg').window('close');
+    $('#ScanFile').window('close');
 });
 
 function msgShow(title, msgString, msgType) {
@@ -176,6 +177,7 @@ function GridView() {
 { field: 'Name', title: '意向受让方姓名', width: 100, align: 'left', sortable: true },
 { field: 'BidName', title: '标的名称', width: 80, align: 'left', sortable: true }
 ]], columns: [[
+{ field: 'string', title: '附件信息', width: 150, align: 'left', sortable: true, formatter: function (value, row, index) { return row.TranId != '前台受理科' ? "<span style='color:blue;' onclick='OnUploadFile(" + row.Id + ");'>上传查看附件</span>" : "<span style='color:blue;' onclick='OnUploadFile(" + row.Id + ");'>上传附件</span>"; } },
 { field: 'ListingPrice', title: '挂牌价格', width: 80, align: 'left', sortable: true },
 { field: 'StartDate', title: '转出开始时间', width: 80, align: 'left', sortable: true },
 { field: 'EndDate', title: '转出结束时间', width: 80, align: 'left', sortable: true },
@@ -323,4 +325,10 @@ function OnTranScanScanGridView(par) {
         onBeforeRefresh: function () {
         }
     });
+};
+function OnUploadFile(p) {
+
+    $('#ScanFile').window('open');
+    //    $("#ScanUpload").attr("src", "ScanUpload.aspx?p=" + p);
+    $("#ScanUpload").attr("src", "fujianuploadsrf.aspx?p=" + p);
 };

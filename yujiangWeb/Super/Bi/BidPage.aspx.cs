@@ -23,6 +23,7 @@ namespace Web.Super.Bi
                     {
                         adminUser = new GetUserCookiesPlug().GetUserCookies(Request.Cookies["AdminCookies"]["SuperAdminUserSession"]);
                         Session["SuperAdminUserSession"] = adminUser;
+                       
                     }
                 }
             }

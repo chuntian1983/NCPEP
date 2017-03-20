@@ -532,6 +532,24 @@ namespace NCPEP.Dal
                 return Convert.ToInt32(obj);
             }
         }
+        public int GetRecordCount(string strWhere,string tablename)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select count(1) FROM "+tablename+" ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            object obj = DbHelperSQL.GetSingle(strSql.ToString());
+            if (obj == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return Convert.ToInt32(obj);
+            }
+        }
         /// <summary>
         /// 分页获取数据列表
         /// </summary>
@@ -557,7 +575,31 @@ namespace NCPEP.Dal
             strSql.AppendFormat(" WHERE TT.Row between {0} and {1}", startIndex, endIndex);
             return DbHelperSQL.Query(strSql.ToString());
         }
-
+        /// <summary>
+        /// 分页获取数据列表
+        /// </summary>
+        public DataSet GetListByPage(string strWhere, string orderby, int startIndex, int endIndex,string tablename)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("SELECT * FROM ( ");
+            strSql.Append(" SELECT ROW_NUMBER() OVER (");
+            if (!string.IsNullOrEmpty(orderby.Trim()))
+            {
+                strSql.Append("order by T." + orderby);
+            }
+            else
+            {
+                strSql.Append("order by T.Id desc");
+            }
+            strSql.Append(")AS Row, T.*  from "+tablename+" T ");
+            if (!string.IsNullOrEmpty(strWhere.Trim()))
+            {
+                strSql.Append(" WHERE " + strWhere);
+            }
+            strSql.Append(" ) TT");
+            strSql.AppendFormat(" WHERE TT.Row between {0} and {1}", startIndex, endIndex);
+            return DbHelperSQL.Query(strSql.ToString());
+        }
         /*
         /// <summary>
         /// 分页获取数据列表

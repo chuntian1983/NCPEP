@@ -186,11 +186,23 @@
             </tr>
             <tr>
                 <td height="43">
+                    是否为网站中间专题图片</td>
+                <td>
+                    <asp:DropDownList ID="ddlzt" runat="server">
+                        <asp:ListItem>否</asp:ListItem>
+                        <asp:ListItem>是</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <td height="43">
                     新闻图片
                 </td>
                 <td>
                     <asp:FileUpload ID="fileNewsImg" runat="server" />
-                    
+                    <br />
+                    注意：专题图大小为195*128，网站中间显示的专题图片大小为1000*154，新闻资讯图片为640*360
+                    <br />
                     <asp:HyperLink ID="HyperLink1" runat="server" Target="_blank"></asp:HyperLink>
                     
                 </td>

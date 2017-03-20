@@ -31,6 +31,8 @@
             <td height="35">
                 浏览上传附件：<input name="ScanUrl" type="file" id="txtScanUrl" onchange="OnCheckImg('txtScanUrl');"
                     runat="server" style="width: 350px;" class="txt" missingmessage="必须填写" data-options="required:true" />
+                    <br />
+                    注意：上传文件不能超过10M。
             </td>
         </tr>
         <tr align="center">

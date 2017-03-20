@@ -26,6 +26,7 @@ function GridView() {
     $('#tdg').datagrid({
         nowrap: true,
         striped: true,
+        height:350,
         url: '../Ashx/AttAuRep.ashx?' + $.param({ action: "ContractNoList", DepaStatus: 3, StandardMode: 1, bt: "OK" }),
         remoteSort: false,
         sortName: 'Id',

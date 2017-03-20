@@ -25,6 +25,7 @@ function slide(_title, _msg) {
 };
 function GridView() {
     $('#tdg').datagrid({
+        height:350,
         nowrap: true,
         striped: true,
         url: '../Ashx/AttAuRep.ashx?' + $.param({ action: "paging", DepaStatus: 4, StandardMode: 1, bt: "OK" }),

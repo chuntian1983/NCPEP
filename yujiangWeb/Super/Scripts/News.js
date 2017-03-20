@@ -111,13 +111,18 @@ function GridView() {
                         $("#txtNewsTypeId").combobox('setValue', data.NewsTypeId);
                         $("#txtNewsSubheading").val(data.NewsSubheading);
                         $("#txtNewsSource").val(data.NewsSource);
+
                         $("#txtContent").val(data.Content);
+                        
                         $("#txtKeyword").val(data.Keyword);
                         editor1.html(data.NewsContent);
                         $("#txtId").val(data.Id);
                         $("#txtNumClicks").val(data.NumClicks);
                         $("#txtNewsImg").val(data.NewsImg);
                         $("#txtNewsFile").val(data.NewsFile);
+
+                        $("#txtsj").val(data.CreateDate.substring(0,10));
+                       
                         /**/
                         $("#lblNewsImg").html(data.NewsImg);
                         $("#aNewsImg").attr("src", "../../newsImg/max/" + data.NewsImg);
@@ -216,6 +221,7 @@ jQuery(function ($) {
 });
 jQuery(function ($) {
     $("#btnAdd").click(function () {
+        
         $('#forms').form('submit', {
             url: '../ashx/news.ashx?action=add',
             async: false,
@@ -231,6 +237,10 @@ jQuery(function ($) {
         });
     });
 });
+function MyFun() {
+    $('#tdg').datagrid('reload');
+    $('#newAdd').window('close');
+}
 jQuery(function ($) {
     $("#btnEdit").click(function () {
         $('#forms').form('submit', {

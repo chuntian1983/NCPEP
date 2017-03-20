@@ -57,6 +57,7 @@ jQuery(function ($) {
 });
 function GridView() {
     $('#tdg').datagrid({
+        height: 350,
         nowrap: true,
         striped: true,
         url: '../Ashx/WebUser.ashx?action=paging',
