@@ -17,6 +17,7 @@ namespace Web
         public string t = string.Empty;
         public string url1, url2, url3, url4;
         public string fzjg;
+        public string strxw = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             url1 = System.Configuration.ConfigurationManager.AppSettings["url1"];
@@ -28,14 +29,16 @@ namespace Web
                 DataTable dataTable = new WebSiteBll().GetImgList();
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    p += "../newsImg/max/" + dataTable.Rows[i]["NewsImg"];
-                    l += "NewsDetails.aspx?t=" + dataTable.Rows[i]["NewsTypeId"] + "&id=" + dataTable.Rows[i]["Id"];
-                    t += dataTable.Rows[i]["NewsTitle"];
+                    //p += "../newsImg/max/" + dataTable.Rows[i]["NewsImg"];
+                    //l += "NewsDetails.aspx?t=" + dataTable.Rows[i]["NewsTypeId"] + "&id=" + dataTable.Rows[i]["Id"];
+                    //t += dataTable.Rows[i]["NewsTitle"];
                     if (i < dataTable.Rows.Count - 1)
                     {
-                        p += "|";
-                        l += "|";
-                        t += "|";
+                        //p += "|";
+                        //l += "|";
+                        //t += "|";
+                        string strimg = "../newsImg/max/" + dataTable.Rows[i]["NewsImg"];
+                        strxw += "<li><a target=\"_blank\" href=\"NewsDetails.aspx?t=" + dataTable.Rows[i]["NewsTypeId"] + "&id=" + dataTable.Rows[i]["Id"] + "\"><img src=\"" + strimg + "\" alt=\"" + dataTable.Rows[i]["NewsTitle"] + "\" /></a></li>";
                     }
                 }
                 BindBanshi();

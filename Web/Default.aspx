@@ -40,6 +40,30 @@
 .floating_ewm p{color:#fff;margin-top:5px;}
 .floating_ewm .qrcord_p01{font-size:12px;line-height:20px;}
 .floating_ewm .qrcord_p02{font-size:18px;}
+
+.demo {width: 655px;height: 400px;font-size: 14px;position:relative;}
+.demo a.control {position:absolute;display: block;top: 50%;margin-top: -78px;width: 76px;height: 112px;cursor: pointer;z-index: 2;background: url(../images/buttons.png) no-repeat}
+.demo a.prev {left: 0;background-position: 0 0}
+.demo a.next {right: 0;background-position: -76px 0}
+.demo a.prev:hover {background-position: 0 -112px}
+.demo a.next:hover {background-position: -76px -112px}
+
+        #box-1 {
+            height:100px;
+             display:none;
+             background-color:#c40b0c;
+        }
+        #box-1 li {
+            line-height:45px;
+             color:white;
+              font-size:14px;
+              font-weight:bold;
+        }
+            #box-1 li a {
+                 cursor:pointer;
+                 color:white;
+            }
+
     </style>
     <script type="text/javascript" src="Scripts/top.js"></script>
     <script type="text/javascript">
@@ -127,7 +151,14 @@ function shitabs(fid,sid,num,active,c) {
     	</div>
     </div> 
 
-    <div class="main">
+    <div class="main" style=" position:relative">
+          <div id="box-1"  style="left:260px; top:0px;   width:130px;  z-index:9999;position:absolute; background-font-size:14px; text-align:center;">
+		<ul>
+			<li><a href="BidList2.aspx?t=4"  target="_blank">挂牌项目</a> </li>
+			<li><a href="BidList.aspx?t=4"  target="_blank">成交项目</a></li>
+			
+		</ul>
+	</div>
         <div class="tzhi">
             <a href="NewsList.aspx?ntid=9" style=" display:block; width:150px; float:left;">通知公告</a>
             <div id="scrollText"></div>
@@ -138,7 +169,7 @@ function shitabs(fid,sid,num,active,c) {
             <div class="h_new_t">
             </div>
             <div class="h_new_c">
-                <script type="text/javascript">
+                <%--<script type="text/javascript">
                     var focus_width = 640;
                     var focus_height = 340;
                     var text_height = 20;
@@ -153,7 +184,28 @@ function shitabs(fid,sid,num,active,c) {
                     document.write('<embed src="Images/focus.swf" wmode="opaque" FlashVars="pics=' + pics + '&links=' + links + '&texts=' + texts + '&borderwidth=' + focus_width + '&borderheight=' + focus_height + '&textheight=' + text_height
                         + '" menu="false" bgcolor="#F0F0F0" quality="high" width="' + focus_width + '" height="' + swf_height + '" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');
                     document.write('</object>');                   
-                </script>
+                </script>--%>
+                 <div class="demo">
+	<a class="control prev"></a><a class="control next abs"></a><!--自定义按钮，移动端可不写-->
+	<div class="slider"><!--主体结构，请用此类名调用插件，此类名可自定义-->
+		<ul>
+			<%=strxw %>
+		</ul>
+	</div>
+</div>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/YuxiSlider.jQuery.min.js"></script>
+<script>
+$(".slider").YuxiSlider({
+	width:655, //容器宽度
+	height:400, //容器高度
+	control:$('.control'), //绑定控制按钮
+	during:4000, //间隔4秒自动滑动
+	speed:800, //移动速度0.8秒
+	mousewheel:true, //是否开启鼠标滚轮控制
+	direkey:true //是否开启左右箭头方向控制
+});
+</script>
             </div>
             <div class="h_new_b">
             </div>

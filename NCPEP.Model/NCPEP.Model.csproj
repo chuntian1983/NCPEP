@@ -91,6 +91,7 @@
     <Compile Include="TempUser.cs" />
     <Compile Include="TranProcess.cs" />
     <Compile Include="TurnOutType.cs" />
+    <Compile Include="T_AdminUser.cs" />
     <Compile Include="T_Bid.cs" />
     <Compile Include="T_BidPlacard.cs" />
     <Compile Include="T_BidTrans.cs" />

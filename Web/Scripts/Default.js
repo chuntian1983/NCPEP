@@ -60,7 +60,7 @@ function OnShowBidClick(r,ty,neirong) {
         var productData = data.T;
         if (productData == null) { rowcount = productData.length; }
         $.each(productData, function (i, n) {
-            tbid += "<li><span class=\"sp3\">HJNJ" + n.Admissibility + "</span><span class=\"sp2\"><a target=\"_blank\" href=\"BidDetails.aspx?nid=" + n.FK_LiceTranId + "&id=" + n.Id + "\">" + n.BidName + "</a></span><span class=\"sp5\">" + n.Properties + "</span><span class=\"sp1\">" + n.StartDate.substring(0, 10) + "</span><span class=\"sp1\">" + n.ListingPrice + "</span><span class=\"sp1\">" + n.EndDate.substring(0, 10) + "</span><span class=\"sp1\"><a href=\"\"><!--<img src=\"images/nc_30.jpg\">--></a></span></li>";
+            tbid += "<li><span class=\"sp3\">HJNS" + n.Admissibility + "</span><span class=\"sp2\"><a target=\"_blank\" href=\"BidDetails.aspx?nid=" + n.FK_LiceTranId + "&id=" + n.Id + "\">" + n.BidName + "</a></span><span class=\"sp5\">" + n.Properties + "</span><span class=\"sp1\">" + n.StartDate.substring(0, 10) + "</span><span class=\"sp1\">" + n.ListingPrice + "</span><span class=\"sp1\">" + n.EndDate.substring(0, 10) + "</span><span class=\"sp1\"><a href=\"\"><!--<img src=\"images/nc_30.jpg\">--></a></span></li>";
         });
         tbid += " ";
         $("."+neirong+"").html(tbid);

@@ -38,6 +38,7 @@ jQuery(function ($) {
             $("#txtStandardType").text(data.T[0].StandardType);
             $("#txtPublicity").text(data.T[0].Publicity);
             $("#txtTradingCenterName").text(data.T[0].TradingCenterName);
+            $("#txtsrfjbqk").text(data.T[0].srfjbtj);
         } else {
             $("#txtBidName").html("<span style='color:red;font-size:30px;'>暂无数据信息！</span>");
         }

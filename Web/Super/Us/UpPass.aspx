@@ -12,7 +12,18 @@
     <script src="../Scripts/easyUI/jquery.easyui.min.js" type="text/javascript" language="javascript"></script>
     <script src="../Scripts/easyUI/locale/easyui-lang-zh_CN.js" type="text/javascript"
         language="javascript"></script>
-    <script src="../Scripts/UpPass.js" type="text/javascript" language="javascript"></script>
+    
+    <style type="text/css">
+        .auto-style1 {
+            width: 208px;
+        }
+    </style>
+    <script>
+        function msgShow(title, msgString, msgType) {
+            $.messager.alert(title, msgString, msgType);
+        };
+    </script>
+    
 </head>
 <body class="easyui-layout">
     <noscript>
@@ -26,23 +37,34 @@
                 <td style="width: 80px" height="40">
                     登录名：
                 </td>
-                <td>
+                <td class="auto-style1">
+                    <asp:Label ID="lbadminlogname" runat="server" Text=""></asp:Label>
                     <span name="AdminLogName" id="txtAdminLogName" style="font-size: 20px;"></span>
                 </td>
             </tr>
             <tr>
                 <td style="width: 80px" height="40">
-                    密 码：<span style="color: Red;">*</span>
+                    原密码：<span style="color: Red;">*</span>
                 </td>
-                <td>
-                    <input type="text" name="AdminLogPass" id="txtAdminLogPass" maxlength="100" class="easyui-validatebox"
-                        style="width: 200px;" missingmessage="必须填写" data-options="required:true,validType:'length[6,20]'" />
+                <td class="auto-style1">
+                    <asp:TextBox ID="txtoldpass" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtoldpass" ErrorMessage="*"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 80px" height="40">
+                    新密码：<span style="color: Red;">*</span>
+                </td>
+                <td class="auto-style1">
+                    <asp:TextBox ID="TextBox1" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox1" ErrorMessage="新密码不能为空"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td colspan="2" height="40">
                     <div style="text-align: left; padding-left: 100px; height: 30px; line-height: 30px;">
-                        <a id="btnEdit" class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">修改</a>
+
+                        <asp:Button ID="Button1" runat="server" Text="修  改" OnClick="Button1_Click" />
                     </div>
                 </td>
             </tr>

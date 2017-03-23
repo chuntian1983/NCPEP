@@ -44,7 +44,7 @@ body{background: #e5efff url(../Images/bg.jpg) repeat-x  left -20px;}
 .list_wz{background-image: url(../Images/wz.png);}
 .h_new_b,.h_new_t{background: url(../Images/jdtu.jpg) no-repeat; height: 8px;width:660px;}
 .h_new_b{background-position: left -8px;}
-.h_new_c{width: 638px; padding:0 10px; border-left:1px solid #c7c7c7;border-right:1px solid #c7c7c7; overflow:hidden;}
+.h_new_c{width: 638px; padding:0 5px; border-left:1px solid #c7c7c7;border-right:1px solid #c7c7c7; overflow:hidden;}
 .new_tab{float: left; margin-left:10px; height: 375px; overflow: hidden;}
 .or_search_tab,.new_s{border-bottom:1px solid #ff4504;line-height: 30px; height: 30px;}
 .or_search_tab a,.new_s a{display: block; width:107px;  float: left; text-align: center; font-weight: bold;}

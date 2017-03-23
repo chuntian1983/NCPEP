@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/Styles/main.css" />
     <link rel="stylesheet" type="text/css" href="/Styles/base.css" />
     <link rel="stylesheet" type="text/css" href="/Styles/list.css" />
+    
     <script src="/Scripts/jquery-1.4.1.min.js" type="text/javascript" language="javascript"></script>
     <script src="/Scripts/Site.js" type="text/javascript" language="javascript"></script>
     <script type="text/javascript">
@@ -194,7 +195,41 @@
             
             
         });
+        $(document).ready(function () {
+            $('#lisy3').mouseover(function () {
+                
+                $('#box-1').slideDown(300);
+            });
+            $('#lisy3').mouseout(function () {
+
+               
+                $('#box-1').hide();
+            });
+            $('#box-1').mouseover(function () {
+                
+                    $("#lisy3").addClass("menu_nav_ligb");
+                    $("#asy3").addClass("menu_nav_white");
+                    $("#asy3").removeClass("menus4_1");
+                    $("#asy3").addClass("menus4");
+
+                
+                
+                $('#box-1').show();
+
+            });
+            $('#box-1').mouseout(function () {
+                $('#box-1').hide();
+               
+                    $("#lisy3").removeClass("menu_nav_ligb");
+                    $("#asy3").addClass("menus4_1");
+                    $("#asy3").removeClass("menus4");
+                    $("#asy3").removeClass("menu_nav_white");
+
+            });
+            });
     </script>
+    
+    
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -219,8 +254,8 @@
         <div class="main1">
             <img src="images/top.png">
         </div>
-        <div class="main1">
-            <div class="fl">
+        <div class="main1" >
+            <div class="fl" >
                 <ul class="menu_nav">
                     <li id="lisy1" class="menu_nav_ligb"><a id="asy1" href="Default.aspx" class="menu_nav_white menus1">首页</a></li>             <li id="lisy2"><a id="asy2" href="NewsList.aspx?ntid=1&t=3" class="menus3_1" target="_blank">新闻中心</a></li>
                     <li id="lisy3"><a id="asy3" href="BidList.aspx?t=4" class="menus4_1" target="_blank">交易项目</a></li>
@@ -229,7 +264,10 @@
                     <li id="lisy6" ><a id="asy6" href="NewsList.aspx?ntid=4&t=7" class="menus7_1" target="_blank">办事指南</a></li>
                    <!-- <li><a href="NewsList.aspx?ntid=7&t=2" class="menus2_1">关于我们</a></li>-->
                 </ul>
+
             </div>
+           
+      
             <div class="fr" >
                 <ul class="menu_nav1">
 				    <li id="libszn" class="menul2_1"></li>
@@ -237,6 +275,7 @@
                 </ul>
             </div>
         </div>
+    
         <!--
    <a href="../NewsList.aspx?ntid=4">办事指南</a>
             <a href="../NewsList.aspx?ntid=5">专题活动</a>

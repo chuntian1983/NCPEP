@@ -21,7 +21,7 @@ namespace NCPEP.Bll
             roleDal = new RolePermissionsDal();
         }
         //
-        public dynamic GetById(int Id)
+        public NCPEP.Model.AdminUser GetById(int Id)
         {
             return dal.GetModel(Id);
         }

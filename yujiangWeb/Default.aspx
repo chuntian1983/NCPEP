@@ -21,6 +21,13 @@
             border:0px;
 
         }
+
+        .demo {width: 655px;height: 400px;font-size: 14px;position:relative;}
+.demo a.control {position:absolute;display: block;top: 50%;margin-top: -78px;width: 76px;height: 112px;cursor: pointer;z-index: 2;background: url(../images/buttons.png) no-repeat}
+.demo a.prev {left: 0;background-position: 0 0}
+.demo a.next {right: 0;background-position: -76px 0}
+.demo a.prev:hover {background-position: 0 -112px}
+.demo a.next:hover {background-position: -76px -112px}
     </style>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
@@ -30,7 +37,28 @@
     <!--热点新闻-->
     <div class="hotnews clearfix">
         <div class="hot_news_tu">
-            <script type="text/javascript">
+             <div class="demo">
+	<a class="control prev"></a><a class="control next abs"></a><!--自定义按钮，移动端可不写-->
+	<div class="slider"><!--主体结构，请用此类名调用插件，此类名可自定义-->
+		<ul>
+			<%=strxw %>
+		</ul>
+	</div>
+</div>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/YuxiSlider.jQuery.min.js"></script>
+<script>
+$(".slider").YuxiSlider({
+	width:655, //容器宽度
+	height:400, //容器高度
+	control:$('.control'), //绑定控制按钮
+	during:4000, //间隔4秒自动滑动
+	speed:800, //移动速度0.8秒
+	mousewheel:true, //是否开启鼠标滚轮控制
+	direkey:true //是否开启左右箭头方向控制
+});
+</script>
+            <%--<script type="text/javascript">
                 var focus_width = 650;
                 var focus_height = 330;
                 var text_height = 40;
@@ -45,7 +73,7 @@
                 document.write('<embed src="Images/focus.swf" wmode="opaque" FlashVars="pics=' + pics + '&links=' + links + '&texts=' + texts + '&borderwidth=' + focus_width + '&borderheight=' + focus_height + '&textheight=' + text_height
                         + '" menu="false" bgcolor="#F0F0F0" quality="high" width="' + focus_width + '" height="' + focus_height + '" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');
                 document.write('</object>');                   
-            </script>
+            </script>--%>
         </div>
         <div class="hot_news_list">
             <div class="hot_news_list_c ">

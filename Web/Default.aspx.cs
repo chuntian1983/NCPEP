@@ -21,6 +21,7 @@ namespace Web
         public string wqzt,wqzt2;
         public string zcfg, jygz;
         public string fzjg1, fzjg2;//分支机构
+        public string strxw = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -28,15 +29,17 @@ namespace Web
                 DataTable dataTable = new WebSiteBll().GetImgList();
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    p += "../newsImg/max/" + dataTable.Rows[i]["NewsImg"];
-                    l += "NewsDetails.aspx?t=" + dataTable.Rows[i]["NewsTypeId"] + "&id=" + dataTable.Rows[i]["Id"];
-                    t += dataTable.Rows[i]["NewsTitle"];
-                    if (i < dataTable.Rows.Count - 1)
-                    {
-                        p += "|";
-                        l += "|";
-                        t += "|";
-                    }
+                    //p += "../newsImg/max/" + dataTable.Rows[i]["NewsImg"];
+                    //l += "NewsDetails.aspx?t=" + dataTable.Rows[i]["NewsTypeId"] + "&id=" + dataTable.Rows[i]["Id"];
+                    //t += dataTable.Rows[i]["NewsTitle"];
+                    //if (i < dataTable.Rows.Count - 1)
+                    //{
+                    //    p += "|";
+                    //    l += "|";
+                    //    t += "|";
+                    //}
+                    string strimg = "../newsImg/max/" + dataTable.Rows[i]["NewsImg"];
+                    strxw += "<li><a target=\"_blank\" href=\"NewsDetails.aspx?t=" + dataTable.Rows[i]["NewsTypeId"] + "&id=" + dataTable.Rows[i]["Id"] + "\"><img src=\"" + strimg + "\" alt=\"" + dataTable.Rows[i]["NewsTitle"] + "\" /></a></li>";
                 }
                 BindDll();
                 BindGpRep();

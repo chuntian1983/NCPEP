@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BidList2.aspx.cs" Inherits="Web.BidList2" %>
+<%@ Register Assembly="AspNetPager" Namespace="Wuqi.Webdiyer" TagPrefix="webdiyer" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link type="text/css" href="Styles/pagination.css" rel="stylesheet" />
     <script src="Scripts/jquery.pagination.js" type="text/javascript" language="javascript"></script>
-    <script src="Scripts/BidList2.js" type="text/javascript" language="javascript"></script>
+  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id="showLoad" style="display: none; position: absolute; top: 0%; left: 0%; width: 100%;
@@ -19,12 +20,12 @@
     </div>
     <div class="list top">
         <div class="gplist">
-            <table class="tr_list">
+              <table class="tr_list">
                 <tr>
                     <th class="th3">
                         项目编号
                     </th>
-                    <th class="th2">
+                    <th class="th2" style="width:490px;">
                         标的名称
                     </th>
                     <th class="th1">
@@ -40,15 +41,43 @@
                         交易状态
                     </th>
                 </tr>
-                
-            </table>
-            <table id="lblBidList" class="tr_list">
-            </table>
+                  
+            
+                <asp:Repeater runat="server" ID="rep"><ItemTemplate>
+                <tr>
+                    <td >
+                        HJNS<%#Eval("Admissibility") %></td>
+                    <td  style="width:490px;">
+                        <%#Eval("BidName").ToString().Length>15?Eval("bidname").ToString().Substring(0,15):Eval("bidname").ToString() %>
+                    </td>
+                    <td >
+                        <%#GetLXname(Eval("Properties").ToString()) %>
+                    </td>
+                    <td >
+                        <%#DateTime.Parse( Eval("StartDate").ToString()).ToString("yyyy-MM-dd") %>
+                    </td>
+                    <td >
+                        <%#Eval("ListingPrice") %>
+                    </td>
+                    <td >
+                        挂牌中
+                    </td>
+                </tr>
+                </ItemTemplate></asp:Repeater>
+          </table>
             
         </div>
         <div>
-            <div id="Pagination" class="flickr">
-            </div>
+            <div class="panelBar pager">
+            <webdiyer:AspNetPager ID="pg" runat="server" ShowBoxThreshold="5" ShowCustomInfoSection="Left"
+                HorizontalAlign="Right" OnPageChanged="Pager_PageChanged" CustomInfoClass="pager-1"
+                CustomInfoTextAlign="Left" FirstPageText="首页" LastPageText="尾页" NextPageText="下一页"
+                PrevPageText="上一页" CustomInfoHTML="数据：%RecordCount%条  第%CurrentPageIndex%/%PageCount%页 "
+                AlwaysShow="true" PageIndexBoxClass="homeLogin" PageSize="20" PageIndexBoxStyle="pagerindexbox"
+                PageIndexBoxType="TextBox" ShowPageIndexBox="Always" SubmitButtonText="Go">
+            </webdiyer:AspNetPager>
+            <asp:HiddenField ID="hdpage" runat="server" Value="1" />
+        </div>
         </div>
     </div>
 </asp:Content>

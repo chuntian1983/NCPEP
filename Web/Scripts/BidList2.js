@@ -1,12 +1,12 @@
 ﻿jQuery(function ($) {
-    OnLoadBidListClick(0);
+    OnLoadBidListClick(1);
 });
 
 var count = 0;
 function OnLoadBidListClick(pageindex) {
     $.ajax({
-        url: "Handler/WebSite.ashx?action=BidList",
-        data: "page=" + pageindex + "&rows=20",
+        url: "Handler/WebSite.ashx?action=BidList&zt=2&page=" + pageindex + "&rows=2",
+        data: "page=" + pageindex + "&rows=2",
         type: "post",
         cache: "false",
         dataType: "json",
@@ -18,8 +18,9 @@ function OnLoadBidListClick(pageindex) {
             if (null != json) {
                 var productData = json.T;
                 count = json.page.pagecount;
+                
                 $.each(productData, function (i, n) {
-                    tbidList += "<tr><td class=\"th3\">HJNJ" + n.Admissibility + "</td><td class=\"th2\"><a href=\"BidDetails.aspx?t=" + n.FK_LiceTranId + "&id=" + n.Id + "\">" + n.BidName + "</a></td><td class=\"th1\">" + n.Properties + "</td><td class=\"th1\">" + n.StartDate.substring(0, 10) + "</td><td class=\"th1\">" + n.ListingPrice + "</td><td class=\"th1\">挂牌中</td><td class=\"th1\"><a href=\"\"><!--<img src=\"images/nc_30.jpg\">--></a></td></tr>";
+                    tbidList += "<tr><td class=\"th3\">HJNS" + n.Admissibility + "</td><td  style=\"width:520px;\"><a href=\"BidDetails.aspx?t=" + n.FK_LiceTranId + "&id=" + n.Id + "\">" + n.BidName + "</a></td><td class=\"th1\">" + n.Properties + "</td><td class=\"th1\">" + n.ListingPrice + "</td><td class=\"th1\">交易完成</td></tr>";
                 });
                 if (0 == productData.length) { tbidList = "<li>暂无数据!</li>"; }
                 $("#lblBidList").html(tbidList);
@@ -28,10 +29,11 @@ function OnLoadBidListClick(pageindex) {
                 callback: pageselectCallback,
                 prev_text: '<<上一页',
                 next_text: '下一页>>',
-                items_per_page: 20,
+                items_per_page: 2,
                 num_display_entries: 6,
                 current_page: pageindex,
                 num_edge_entries: 2
+               
             });
         }
     });

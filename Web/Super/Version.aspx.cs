@@ -15,7 +15,7 @@ namespace Web.Super
         /// <returns></returns>
         public static string Ver()
         {
-            return "Ver:1.1112";
+            return "Ver:1.1114";
         }
         public static string strVersion()
         {
@@ -30,6 +30,17 @@ namespace Web.Super
 
 
             /*
+             * 
+             * 
+             * 
+             * 
+             * * 2017-3-22更新版本Ver:1.1114
+             * 1.密码修改需要输入老密码才能修改。
+             * 2.首页图片信息重新更换轮换图片插件。
+             * 3.交易项目添加下拉菜单挂牌项目和成交项目。
+             * 4.成交项目交易并审核完成就可以发布出来。
+             * 
+             * 
              * 2017-2-28更新版本Ver:1.1113
              * 1.添加档案管理功能模块
              * 2.添加电子竞价演示页面

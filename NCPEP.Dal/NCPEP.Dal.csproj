@@ -91,6 +91,7 @@
     <Compile Include="TOnlineNumberDal.cs" />
     <Compile Include="TranProcessDal.cs" />
     <Compile Include="TurnOutTypeDal.cs" />
+    <Compile Include="T_AdminUser.cs" />
     <Compile Include="T_Bid.cs" />
     <Compile Include="T_BidPlacard.cs" />
     <Compile Include="T_BidTrans.cs" />

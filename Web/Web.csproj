@@ -501,6 +501,7 @@
     <Content Include="Scripts\gundong.js" />
     <Content Include="Scripts\IntenList.js" />
     <Content Include="Scripts\Intention.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.pagination.js" />
     <Content Include="Scripts\js\gundong.js" />
     <Content Include="Scripts\js\jquery.js" />
@@ -516,6 +517,7 @@
     <Content Include="Scripts\UsLogin.js" />
     <Content Include="Scripts\UsReg.js" />
     <Content Include="Scripts\VeriUser.js" />
+    <Content Include="Scripts\YuxiSlider.jQuery.min.js" />
     <Content Include="SearchList.aspx" />
     <Content Include="Styles\images\search.png" />
     <Content Include="Styles\listnew.css" />

@@ -491,6 +491,7 @@
     <Content Include="Scripts\Default.js" />
     <Content Include="Scripts\IntenList.js" />
     <Content Include="Scripts\Intention.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.pagination.js" />
     <Content Include="Scripts\LiceTranScanUpload.js" />
     <Content Include="Scripts\LiTr.js" />
@@ -502,6 +503,7 @@
     <Content Include="Scripts\UsLogin.js" />
     <Content Include="Scripts\UsReg.js" />
     <Content Include="Scripts\VeriUser.js" />
+    <Content Include="Scripts\YuxiSlider.jQuery.min.js" />
     <Content Include="sfz.aspx" />
     <Content Include="sfzcx.aspx" />
     <Content Include="Styles\images\col.png" />

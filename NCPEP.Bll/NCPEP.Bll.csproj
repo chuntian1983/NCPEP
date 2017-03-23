@@ -118,6 +118,7 @@
     <Compile Include="TranProcessBll.cs" />
     <Compile Include="TurnOutTypeBll.cs" />
     <Compile Include="TwoAgreeBll.cs" />
+    <Compile Include="T_AdminUser.cs" />
     <Compile Include="T_Bid.cs" />
     <Compile Include="T_BidPlacard.cs" />
     <Compile Include="T_BidTrans.cs" />

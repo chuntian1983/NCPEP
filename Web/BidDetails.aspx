@@ -15,7 +15,7 @@
             <table border="0" class="table" cellpadding="0" cellspacing="0" width="625" align="center">
                 <tr>
                     <td align="right" height="35" colspan="5">
-                        项目编号：HJNJ<span id="lblAdmissibility"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        项目编号：HJNS<span id="lblAdmissibility"></span>&nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
                 </tr>
                 <tr>
@@ -149,6 +149,18 @@
                     </td>
                     <td colspan="3" valign="top">
                         <span id="txtBidBasic"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="135" width="130" align="center">
+                        受让方<br />应当<br />具备<br />
+                        <br />
+                        基&nbsp;&nbsp;本<br />
+                        <br />
+                        情&nbsp;&nbsp;况
+                    </td>
+                    <td colspan="3" valign="top">
+                        <span id="txtsrfjbqk"></span>
                     </td>
                 </tr>
                 <tr>
