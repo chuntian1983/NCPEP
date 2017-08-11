@@ -195,11 +195,13 @@
     <Content Include="Images\ss.jpg" />
     <Content Include="Images\ss1.jpg" />
     <Content Include="Images\sx.jpg" />
+    <Content Include="Images\sz.png" />
     <Content Include="Images\tb.jpg" />
     <Content Include="Images\tb.png" />
     <Content Include="Images\tb1.png" />
     <Content Include="Images\titbg.jpg" />
     <Content Include="Images\top.jpg" />
+    <Content Include="Images\top.swf" />
     <Content Include="Images\tubiao.png" />
     <Content Include="Images\unload.jpg" />
     <Content Include="Images\user1.jpg" />
@@ -219,6 +221,9 @@
     <Content Include="Images\zt.jpg" />
     <Content Include="Images\ztnew.jpg" />
     <Content Include="IntenDetails.aspx" />
+    <Content Include="js\jquery-1.7.2.min.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jqueryflash.js" />
     <Content Include="kindeditor\asp.net\bin\LitJSON.dll" />
     <Content Include="kindeditor\asp.net\demo.aspx" />
     <Content Include="kindeditor\asp.net\README.txt" />
@@ -512,6 +517,7 @@
     <Content Include="Styles\images\edit.png" />
     <Content Include="Styles\images\news.png" />
     <Content Include="Styles\images\search.png" />
+    <Content Include="Styles\images\sz.png" />
     <Content Include="Styles\listnew.css" />
     <Content Include="Styles\style.css" />
     <Content Include="Super\Bi\Agreement.aspx" />

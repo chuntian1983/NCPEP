@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="8" virtualPath="/Web.csproj/global.asax" hash="fffffffff116c686" filehash="1f9105879b0a" flags="150000" assembly="webnccq" type="ASP.global_asax">
+  <filedeps>
+    <filedep name="/Web.csproj/global.asax" />
+  </filedeps>
+</preserve>

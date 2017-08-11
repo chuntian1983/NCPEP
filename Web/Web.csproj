@@ -38,7 +38,7 @@
       <Objects>
       </Objects>
     </PublishDatabaseSettings>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -99,9 +99,12 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="bin\DBUtility.dll" />
-    <Content Include="bin\itextsharp.dll" />
     <Content Include="Controls\ValidateCode.aspx" />
     <Content Include="Controls\WebFoot.ascx" />
+    <Content Include="css\bootstrap-theme.css" />
+    <Content Include="css\bootstrap-theme.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
     <Content Include="dzjj.aspx" />
     <Content Include="error.html" />
     <Content Include="Images\01.jpg" />
@@ -184,6 +187,9 @@
     <Content Include="Images\zt.jpg" />
     <Content Include="Images\ztnew.jpg" />
     <Content Include="IntenDetails.aspx" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\npm.js" />
     <Content Include="kindeditor\asp.net\bin\LitJSON.dll" />
     <Content Include="kindeditor\asp.net\demo.aspx" />
     <Content Include="kindeditor\asp.net\README.txt" />
@@ -450,7 +456,6 @@
     <Content Include="LED\WebForm1.aspx" />
     <Content Include="LED\WebForm2.aspx" />
     <Content Include="LED\WebForm3.aspx" />
-    <Content Include="LED\WebForm4.aspx" />
     <Content Include="LED\WebForm5.aspx" />
     <Content Include="map.aspx" />
     <Content Include="My97DatePicker\calendar.js" />
@@ -521,6 +526,7 @@
     <Content Include="SearchList.aspx" />
     <Content Include="Styles\images\search.png" />
     <Content Include="Styles\listnew.css" />
+    <Content Include="Super\Bi\AgreementXX.aspx" />
     <Content Include="Super\Bi\Biddangan.aspx" />
     <Content Include="Super\Bi\Bidview.aspx" />
     <Content Include="Super\Bi\daying.aspx" />
@@ -555,6 +561,7 @@
     <Content Include="Super\Lt\WebForm1.aspx" />
     <Content Include="Super\rg\rg.aspx" />
     <Content Include="Super\Scan\warning.aspx" />
+    <Content Include="Super\Scripts\Agreementxx.js" />
     <Content Include="Super\Scripts\Arbi.js" />
     <Content Include="Super\Scripts\AttAuditReport.js" />
     <Content Include="Super\Scripts\AttContractNo.js" />
@@ -1332,6 +1339,11 @@
     <Content Include="Super\WebMana\Scripts\uploadify.swf" />
     <Content Include="Super\WebMana\WebInten.aspx" />
     <Content Include="Super\WebMana\User.aspx" />
+    <Content Include="Super\WebMana\wztouadd.aspx" />
+    <Content Include="Super\WebMana\wztoulist.aspx" />
+    <Content Include="Super\WebMana\xmggadd.aspx" />
+    <Content Include="Super\WebMana\xmgglist.aspx" />
+    <Content Include="Super\WebMana\xmggview.aspx" />
     <Content Include="Super\WebMana\yqadd.aspx" />
     <Content Include="Super\WebMana\yqlist.aspx" />
     <Content Include="Super\Zc\Arbi.aspx" />
@@ -1359,6 +1371,8 @@
     <Content Include="IntenList.aspx" />
     <Content Include="BidList.aspx" />
     <Content Include="WebForm1.aspx" />
+    <Content Include="xmlist.aspx" />
+    <Content Include="xmview.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BidDetails.aspx.cs">
@@ -1470,13 +1484,6 @@
     </Compile>
     <Compile Include="LED\WebForm3.aspx.designer.cs">
       <DependentUpon>WebForm3.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="LED\WebForm4.aspx.cs">
-      <DependentUpon>WebForm4.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LED\WebForm4.aspx.designer.cs">
-      <DependentUpon>WebForm4.aspx</DependentUpon>
     </Compile>
     <Compile Include="LED\WebForm5.aspx.cs">
       <DependentUpon>WebForm5.aspx</DependentUpon>
@@ -1697,6 +1704,13 @@
     </Compile>
     <Compile Include="Super\Bi\Agreement.aspx.designer.cs">
       <DependentUpon>Agreement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\Bi\AgreementXX.aspx.cs">
+      <DependentUpon>AgreementXX.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\Bi\AgreementXX.aspx.designer.cs">
+      <DependentUpon>AgreementXX.aspx</DependentUpon>
     </Compile>
     <Compile Include="Super\Bi\AttAuditReport.aspx.cs">
       <DependentUpon>AttAuditReport.aspx</DependentUpon>
@@ -2233,6 +2247,41 @@
     <Compile Include="Super\WebMana\User.aspx.designer.cs">
       <DependentUpon>User.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Super\WebMana\wztouadd.aspx.cs">
+      <DependentUpon>wztouadd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\WebMana\wztouadd.aspx.designer.cs">
+      <DependentUpon>wztouadd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\WebMana\wztoulist.aspx.cs">
+      <DependentUpon>wztoulist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\WebMana\wztoulist.aspx.designer.cs">
+      <DependentUpon>wztoulist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\WebMana\xmggadd.aspx.cs">
+      <DependentUpon>xmggadd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\WebMana\xmggadd.aspx.designer.cs">
+      <DependentUpon>xmggadd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\WebMana\xmgglist.aspx.cs">
+      <DependentUpon>xmgglist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\WebMana\xmgglist.aspx.designer.cs">
+      <DependentUpon>xmgglist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Super\WebMana\xmggview.aspx.cs">
+      <DependentUpon>xmggview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Super\WebMana\xmggview.aspx.designer.cs">
+      <DependentUpon>xmggview.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Super\WebMana\yqadd.aspx.cs">
       <DependentUpon>yqadd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2366,6 +2415,20 @@
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="xmlist.aspx.cs">
+      <DependentUpon>xmlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="xmlist.aspx.designer.cs">
+      <DependentUpon>xmlist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="xmview.aspx.cs">
+      <DependentUpon>xmview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="xmview.aspx.designer.cs">
+      <DependentUpon>xmview.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2450,6 +2513,15 @@
     <Content Include="Handler\default.ashx" />
     <Content Include="kindeditor\asp.net\file_manager_json.ashx" />
     <Content Include="kindeditor\asp.net\upload_json.ashx" />
+    <Content Include="css\bootstrap-theme.css.map" />
+    <Content Include="css\bootstrap-theme.min.css.map" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="css\bootstrap.min.css.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Images\print\npActiveXFirefox4x.xpi" />
     <None Include="kindeditor\jsp\demo.jsp" />
     <None Include="kindeditor\jsp\file_manager_json.jsp" />

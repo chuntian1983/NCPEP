@@ -608,18 +608,36 @@ namespace NCPEP.Bll
             model.Properties = context.Request.Form["Properties"].ToString();
             try { model.TurnOut = int.Parse(context.Request.Form["TurnOut"].ToString()); }
             catch { }
-            model.RightsBodies = context.Request.Form["RightsBodies"].ToString();
-            model.FeedingMechanism = context.Request.Form["FeedingMechanism"].ToString();
-            model.WarrantNumber = context.Request.Form["WarrantNumber"].ToString();
+            try
+            {
+                model.RightsBodies = context.Request.Form["RightsBodies"].ToString();
+            }
+            catch { }
+            try
+            {
+                model.FeedingMechanism = context.Request.Form["FeedingMechanism"].ToString();
+                model.WarrantNumber = context.Request.Form["WarrantNumber"].ToString();
+            }
+            catch { }
             try { model.StandardMode = int.Parse(context.Request.Form["StandardMode"].ToString()); }
             catch { }
             try { model.StandardType = int.Parse(context.Request.Form["StandardType"].ToString()); }
             catch { }
-            model.LowTransaction = context.Request.Form["LowTransaction"].ToString();
+            try
+            {
+                model.LowTransaction = context.Request.Form["LowTransaction"].ToString();
+            }
+            catch { }
             try { model.Turnover = decimal.Parse(context.Request.Form["Turnover"].ToString()); }
             catch { }
-            model.ContractDate = context.Request.Form["ContractDate"].ToString();
-            model.ContractNo = context.Request.Form["ContractNo"].ToString();
+
+            try
+            {
+                model.ContractDate = context.Request.Form["ContractDate"].ToString();
+                model.ContractNo = context.Request.Form["ContractNo"].ToString();
+
+            }
+            catch { }
             //鉴证号生成有问题进行调整
             DataTable dt = DbHelperSQL.Query("select Admissibility from T_Bid order by id desc").Tables[0];
             if (dt.Rows.Count>0)

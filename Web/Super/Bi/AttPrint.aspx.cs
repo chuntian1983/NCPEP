@@ -53,7 +53,7 @@ namespace Web.Super.Bi
                     catch { }
                     try
                     {
-                        this.lbzcf.Text = modeltr.Owner;
+                        this.lbzcf.Text = modeltr.Contact;
                     }
                     catch { }
                     try
@@ -120,7 +120,7 @@ namespace Web.Super.Bi
                             catch { }
                             try
                             {
-                                lbsrffddbr.Text = modeltr.Owner;
+                                lbsrffddbr.Text = modeltr.Contact;
                             }
                             catch { }
                             try
@@ -247,6 +247,9 @@ namespace Web.Super.Bi
                                 lbyue.Text = System.DateTime.Now.Month.ToString();
                                 lbri.Text = System.DateTime.Now.Day.ToString();
                             }
+                            lbnian.Text = "2017";
+                            lbyue.Text = "4";
+                            lbri.Text = "18";
                         }
                         catch { }
                     }

@@ -50,34 +50,38 @@ namespace Web
         }
         protected void BindDll()
         {
-            NCPEP.Bll.OrganizationBll orgbll = new OrganizationBll();
-            DataTable dt = orgbll.GetAllList();
-            this.ddlquyu.DataSource = dt;
-            this.ddlquyu.DataTextField = "OrgShortName";
-            this.ddlquyu.DataValueField = "OrgCode";
-            this.ddlquyu.DataBind();
-            this.ddlquyu.Items.Insert(0, new ListItem("全部"));
-            NCPEP.Bll.PropertyTypeBll pbll = new PropertyTypeBll();
-            DataTable dtp = pbll.GetList("");
-            this.ddlleibie.DataSource = dtp;
-            this.ddlleibie.DataTextField = "PropertyTypeName";
-            this.ddlleibie.DataValueField = "id";
-            this.ddlleibie.DataBind();
-            this.ddlleibie.Items.Insert(0, new ListItem("全部"));
+            //NCPEP.Bll.OrganizationBll orgbll = new OrganizationBll();
+            //DataTable dt = orgbll.GetAllList();
+            //this.ddlquyu.DataSource = dt;
+            //this.ddlquyu.DataTextField = "OrgShortName";
+            //this.ddlquyu.DataValueField = "OrgCode";
+            //this.ddlquyu.DataBind();
+            //this.ddlquyu.Items.Insert(0, new ListItem("全部"));
+            //NCPEP.Bll.PropertyTypeBll pbll = new PropertyTypeBll();
+            //DataTable dtp = pbll.GetList("");
+            //this.ddlleibie.DataSource = dtp;
+            //this.ddlleibie.DataTextField = "PropertyTypeName";
+            //this.ddlleibie.DataValueField = "id";
+            //this.ddlleibie.DataBind();
+            //this.ddlleibie.Items.Insert(0, new ListItem("全部"));
+            NCPEP.Bll.T_XMGG bll = new T_XMGG();
+            DataTable dt = bll.GetList(10," xmby='1'"," xmsj desc").Tables[0];
+            this.repxmgg.DataSource = dt;
+            this.repxmgg.DataBind();
 
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
             string quyu, leibie, mianji, jiage;
             quyu = leibie = mianji = jiage = string.Empty;
-            if (this.ddlquyu.SelectedValue!="全部")
-            {
-                quyu =HttpUtility.HtmlEncode( this.ddlquyu.SelectedValue);
-            }
-            if (this.ddlleibie.SelectedValue!="全部")
-            {
-                leibie =HttpUtility.HtmlEncode( this.ddlleibie.SelectedValue);
-            }
+            //if (this.ddlquyu.SelectedValue!="全部")
+            //{
+            //    quyu =HttpUtility.HtmlEncode( this.ddlquyu.SelectedValue);
+            //}
+            //if (this.ddlleibie.SelectedValue!="全部")
+            //{
+            //    leibie =HttpUtility.HtmlEncode( this.ddlleibie.SelectedValue);
+            //}
             if (!string.IsNullOrEmpty(this.txtmj.Text))
             {
                 mianji =HttpUtility.HtmlEncode(this.txtmj.Text);
@@ -122,8 +126,8 @@ namespace Web
         {
             NCPEP.Bll.T_News newsbll = new T_News();
             DataTable dt = newsbll.GetList(6, " NewsTypeId=2", "CreateDate desc").Tables[0];
-            this.repzcfg.DataSource = dt;
-            this.repzcfg.DataBind();
+            //this.repzcfg.DataSource = dt;
+            //this.repzcfg.DataBind();
             
         }
         /// <summary>
@@ -133,23 +137,25 @@ namespace Web
         {
             NCPEP.Bll.T_News newsbll = new T_News();
             DataTable dt = newsbll.GetList(6, " NewsTypeId=4", "CreateDate").Tables[0];
-            this.repbszn.DataSource = dt;
-            this.repbszn.DataBind();
-            DataTable dtxw = newsbll.GetList(8, "NewsTypeId=1 and IsCheck='1'", "CreateDate desc").Tables[0];
+            //this.repbszn.DataSource = dt;
+            //this.repbszn.DataBind();
+            DataTable dtxw = newsbll.GetList(10, "NewsTypeId=1 and IsCheck='1'", "CreateDate desc").Tables[0];
             this.repxinwen.DataSource = dtxw;
             this.repxinwen.DataBind();
              dtxw = new DataTable();
-            dtxw=newsbll.GetList(8, "NewsTypeId=9 and IsCheck='1'", "CreateDate desc").Tables[0];
+            dtxw=newsbll.GetList(12, "NewsTypeId=9 and IsCheck='1'", "CreateDate desc").Tables[0];
             this.repnotice.DataSource = dtxw;
             this.repnotice.DataBind();
-            DataTable dtgz = newsbll.GetListNotice(2, "NewsTypeId=9 and IsCheck='1'", "CreateDate desc").Tables[0];
+            DataTable dtgz = newsbll.GetListNotice(3, "NewsTypeId=9 and IsCheck='1'", "CreateDate desc").Tables[0];
             StringBuilder sb = new StringBuilder();
             if (dtgz.Rows.Count > 0)
             {
                 for (int i = 0; i < dtgz.Rows.Count; i++)
                 {
                     sb.Append("<a target=\"_blank\" href=\"NewsDetails.aspx?t=9&id=" + dtgz.Rows[i]["id"] + "\">");
-                    sb.Append("" + dtgz.Rows[i]["NewsTitle"] + "    ");
+                    string strtitle = dtgz.Rows[i]["NewsTitle"].ToString();
+                    strtitle = strtitle.Length > 35 ? strtitle.Substring(0, 35)+"..." : strtitle;
+                    sb.Append("" + strtitle + "    ");
                     sb.Append("</a>");
                 }
             }

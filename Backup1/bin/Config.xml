@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WebFoot>
+  <!--地址-->
+  <Date name="GovAddress">
+    上饶农业科技大楼
+  </Date>
+  <!--电话-->
+  <Date name="GovTel">0793-8035162、15779357919</Date>
+  <!--备案号-->
+  <Date name="GovFiling">洪ICP备 00000000号</Date>
+  <!--平台所有的后缀名称-->
+  <Date name="AllTitle">农村综合产权交易中心</Date>
+  <!--禁止随便更改-->
+  <Date name="OrgCode">3602</Date>
+</WebFoot>

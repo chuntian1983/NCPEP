@@ -41,8 +41,9 @@ namespace Web
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(" 1=1");
-            sb.Append(" and DepaStatus='6'");
-
+            //sb.Append(" and DepaStatus='6'");
+            //经过产权交易科审核通过的都作为交易项目
+            sb.Append(" and DepaStatus>=4");
             NCPEP.Bll.T_Bid bll = new NCPEP.Bll.T_Bid();
 
             this.pg.RecordCount = bll.GetRecordCount(sb.ToString());

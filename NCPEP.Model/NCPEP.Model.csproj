@@ -93,6 +93,8 @@
     <Compile Include="TurnOutType.cs" />
     <Compile Include="T_AdminUser.cs" />
     <Compile Include="T_Bid.cs" />
+    <Compile Include="T_BidOne.cs" />
+    <Compile Include="T_BidOneBaojia.cs" />
     <Compile Include="T_BidPlacard.cs" />
     <Compile Include="T_BidTrans.cs" />
     <Compile Include="T_Dyjl.cs" />
@@ -113,6 +115,7 @@
     <Compile Include="T_UploadTypeIndicator.cs" />
     <Compile Include="T_Wztou.cs" />
     <Compile Include="T_XmBeian.cs" />
+    <Compile Include="T_XMGG.cs" />
     <Compile Include="T_YQ.cs" />
     <Compile Include="UploadTypeIndicator.cs" />
     <Compile Include="WebIntention.cs" />

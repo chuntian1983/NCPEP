@@ -1,0 +1,17 @@
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\bin\Web.dll
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\bin\Web.pdb
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\bin\NCPEP.BidCar.dll
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\bin\NCPEP.Bll.dll
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\bin\NCPEP.Dal.dll
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\bin\NCPEP.Model.dll
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\bin\Newtonsoft.Json.Net20.dll
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\bin\itextsharp.dll
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\bin\NCPEP.Com.Util.dll
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\bin\NCPEP.Bll.pdb
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\bin\NCPEP.Dal.pdb
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\bin\NCPEP.Model.pdb
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\bin\NCPEP.Com.Util.pdb
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\obj\Debug\Webshangrao.csprojResolveAssemblyReference.cache
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\obj\Debug\Web.dll
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\obj\Debug\Web.pdb
+F:\mywork\newland\农村产权网站\南昌产权交易\南昌产权交易\NCPEP\shangraoweb\bin\LitJSON.dll

@@ -15,6 +15,8 @@
 
 <body>
     
+    <form id="form1" runat="server">
+    
 <div id="show" style="overflow:hidden;height:235px;border:1px solid red;">   
   <table id="tables"  width="100%";height=235px; border="1px solid red;" cellspacing="0" style="border-collapse:collapse;">
         	
@@ -271,6 +273,12 @@
                 marques2(35, 80, 500);
                 /**marquees(一次滚动高度,速度,停留时间);**/
             </script>  
+        <asp:Button ID="Button1" runat="server" Text="创建多个Pdf新页" OnClick="Button1_Click" />
+        <asp:Button ID="Button2" runat="server" Text="Button" />
+        <asp:Button ID="Button3" runat="server" Text="Button" />
+        <asp:Button ID="Button4" runat="server" Text="Button" />
+        <asp:Button ID="Button5" runat="server" Text="Button" />
+    </form>
 </body>
 
 </html>

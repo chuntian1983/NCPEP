@@ -15,7 +15,7 @@ namespace Web
         public string p = string.Empty;
         public string l = string.Empty;
         public string t = string.Empty;
-        public string url1, url2, url3, url4;
+        public string url1, url2, url3, url4,url5;
         public string fzjg;
         public string strxw = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
@@ -24,6 +24,7 @@ namespace Web
             url2 = System.Configuration.ConfigurationManager.AppSettings["url2"];
             url3 = System.Configuration.ConfigurationManager.AppSettings["url3"];
             url4 = System.Configuration.ConfigurationManager.AppSettings["url4"];
+            url5 = System.Configuration.ConfigurationManager.AppSettings["url5"];
             if (!IsPostBack)
             {
                 DataTable dataTable = new WebSiteBll().GetImgList();
@@ -38,7 +39,7 @@ namespace Web
                         //l += "|";
                         //t += "|";
                         string strimg = "../newsImg/max/" + dataTable.Rows[i]["NewsImg"];
-                        strxw += "<li><a target=\"_blank\" href=\"NewsDetails.aspx?t=" + dataTable.Rows[i]["NewsTypeId"] + "&id=" + dataTable.Rows[i]["Id"] + "\"><img src=\"" + strimg + "\" alt=\"" + dataTable.Rows[i]["NewsTitle"] + "\" /></a></li>";
+                        strxw += "<li><a target=\"_blank\" href=\"NewsDetails.aspx?t=" + dataTable.Rows[i]["NewsTypeId"] + "&id=" + dataTable.Rows[i]["Id"] + "\"><img style=\" width: 655px; height: 400px;\" src=\"" + strimg + "\" alt=\"" + dataTable.Rows[i]["NewsTitle"] + "\" /></a></li>";
                     }
                 }
                 BindBanshi();
